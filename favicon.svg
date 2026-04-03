@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nusantara Teknologi Hijau favicon">
+  <rect width="64" height="64" fill="#ffffff"/>
+  <rect x="2" y="2" width="60" height="60" fill="none" stroke="#0A0A0A" stroke-width="3"/>
+  <rect x="2" y="54" width="60" height="8" fill="#059669"/>
+  <path d="M16 46V16H23L39 36V16H48V46H40L25 27V46Z" fill="#0A0A0A"/>
+  <path d="M2 14V2H14" fill="none" stroke="#059669" stroke-width="3"/>
+</svg>
