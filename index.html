@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nusantara Teknologi Hijau — Computer Vision untuk Industri</title>
+  <meta name="description" content="Solusi computer vision terapan untuk deteksi defect, monitoring keselamatan, optimasi produksi, dan pengurangan waste di lini manufaktur Anda.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    #hero, #about, #solutions, #cta { scroll-margin-top: 72px; }
+    body { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; }
+    @keyframes scanMove { 0%,100%{transform:translateY(0)} 50%{transform:translateY(12px)} }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .scan-line { animation: scanMove 4s ease-in-out infinite; }
+    .blink-dot { animation: blink 2s ease-in-out infinite; }
+    .nav-link { transition: color 0.2s; }
+    .nav-link:hover { color: #059669; }
+    .btn-primary { transition: background-color 0.2s; }
+    .btn-primary:hover { background-color: #047857 !important; }
+    .btn-outline { transition: background-color 0.2s, color 0.2s; }
+    .btn-outline:hover { background-color: #0a0a0a; color: #fff; }
+    input:focus { border-color: #059669; outline: none; }
+    .validation-msg { display: none; color: #dc2626; font-size: 0.75rem; margin-top: 0.25rem; }
+    .validation-msg.show { display: block; }
+  </style>
+</head>
+<body class="bg-white text-zinc-900 overflow-x-hidden">
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-zinc-900">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between" style="height:64px">
+      <a href="#hero" class="flex items-center gap-3">
+        <!-- LOGO SVG -->
+        <svg width="36" height="36" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="76" height="76" stroke="#0A0A0A" stroke-width="3" fill="none"/>
+          <line x1="2" y1="27" x2="78" y2="27" stroke="#0A0A0A" stroke-width="0.75" opacity="0.25"/>
+          <line x1="2" y1="53" x2="78" y2="53" stroke="#0A0A0A" stroke-width="0.75" opacity="0.25"/>
+          <line x1="27" y1="2" x2="27" y2="78" stroke="#0A0A0A" stroke-width="0.75" opacity="0.25"/>
+          <line x1="53" y1="2" x2="53" y2="78" stroke="#0A0A0A" stroke-width="0.75" opacity="0.25"/>
+          <text x="40" y="48" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',sans-serif" font-size="26" font-weight="900" fill="#0A0A0A" letter-spacing="2">NTH</text>
+          <rect x="2" y="72" width="76" height="6" fill="#059669"/>
+          <polyline points="2,14 2,2 14,2" stroke="#059669" stroke-width="2.5" fill="none"/>
+          <polyline points="66,2 78,2 78,14" stroke="#059669" stroke-width="2.5" fill="none"/>
+          <polyline points="78,66 78,78 66,78" stroke="#0A0A0A" stroke-width="1.5" fill="none" opacity="0.3"/>
+          <polyline points="14,78 2,78 2,66" stroke="#0A0A0A" stroke-width="1.5" fill="none" opacity="0.3"/>
+        </svg>
+        <span class="text-sm font-bold tracking-widest uppercase hidden sm:inline">Nusantara Teknologi Hijau</span>
+      </a>
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase">
+        <a href="#about" class="nav-link">Tentang</a>
+        <a href="#solutions" class="nav-link">Solusi</a>
+        <a href="mailto:EMAILANDA@DOMAIN.COM?subject=Konsultasi%20Nusantara%20Teknologi%20Hijau" class="bg-zinc-900 text-white px-5 py-2 btn-primary">Hubungi Kami</a>
+      </div>
+      <!-- Mobile hamburger -->
+      <button id="menuBtn" class="md:hidden p-2" aria-label="Menu">
+        <svg id="menuIconOpen" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="3" y1="6" x2="21" y2="6" stroke="#0A0A0A" stroke-width="2"/>
+          <line x1="3" y1="12" x2="21" y2="12" stroke="#0A0A0A" stroke-width="2"/>
+          <line x1="3" y1="18" x2="21" y2="18" stroke="#0A0A0A" stroke-width="2"/>
+        </svg>
+        <svg id="menuIconClose" width="24" height="24" viewBox="0 0 24 24" fill="none" class="hidden">
+          <line x1="4" y1="4" x2="20" y2="20" stroke="#0A0A0A" stroke-width="2"/>
+          <line x1="20" y1="4" x2="4" y2="20" stroke="#0A0A0A" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t-2 border-zinc-900 bg-white px-6 py-6 flex flex-col gap-4 text-sm font-semibold tracking-widest uppercase">
+      <a href="#about" class="mobile-nav-link">Tentang</a>
+      <a href="#solutions" class="mobile-nav-link">Solusi</a>
+      <a href="mailto:EMAILANDA@DOMAIN.COM?subject=Konsultasi%20Nusantara%20Teknologi%20Hijau" class="bg-zinc-900 text-white px-5 py-3 text-center btn-primary">Hubungi Kami</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero" class="pt-32 pb-20 lg:pt-40 lg:pb-28 px-6 lg:px-12 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-3 h-3 bg-emerald-600"></div>
+          <span class="text-xs font-semibold tracking-widest uppercase text-zinc-500">Computer Vision untuk Industri</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-8" style="line-height:1.05">
+          Akurasi Mesin.<br>
+          <span class="text-zinc-400">Efisiensi</span>
+          <span class="text-emerald-600">Terukur.</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-zinc-600 max-w-xl mb-10 leading-relaxed">
+          Solusi computer vision terapan untuk deteksi defect, monitoring keselamatan, optimasi produksi, dan pengurangan waste di lini manufaktur Anda.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="mailto:EMAILANDA@DOMAIN.COM?subject=Permintaan%20Demo%20Solusi%20Computer%20Vision&body=Halo%20Tim%20NTH%2C%0A%0ASaya%20tertarik%20untuk%20menjadwalkan%20demo%20solusi%20computer%20vision.%0A%0ATerima%20kasih." class="bg-zinc-900 text-white px-8 py-4 text-sm font-bold tracking-widest uppercase btn-primary text-center">
+            Jadwalkan Demo
+          </a>
+          <a href="#solutions" class="border-2 border-zinc-900 px-8 py-4 text-sm font-bold tracking-widest uppercase btn-outline text-center">
+            Lihat Solusi
+          </a>
+        </div>
+        <!-- Metrics strip -->
+        <div class="mt-14 grid grid-cols-3 gap-0 border-t-2 border-zinc-900">
+          <div class="pt-5 border-r-2 border-zinc-900 pr-4">
+            <div class="text-2xl lg:text-3xl font-black tracking-tight">99.8%</div>
+            <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider font-medium">Akurasi Deteksi</div>
+          </div>
+          <div class="pt-5 border-r-2 border-zinc-900 px-4">
+            <div class="text-2xl lg:text-3xl font-black tracking-tight">&lt;15ms</div>
+            <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider font-medium">Latensi Inferensi</div>
+          </div>
+          <div class="pt-5 pl-4">
+            <div class="text-2xl lg:text-3xl font-black tracking-tight">↓34%</div>
+            <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider font-medium">Reduksi Waste</div>
+          </div>
+        </div>
+      </div>
+      <!-- Hero Visual -->
+      <div class="border-2 border-zinc-900 bg-zinc-50 p-2 lg:mt-4">
+        <svg viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" style="max-width:560px">
+          <!-- Background grid -->
+          <line x1="0" y1="0" x2="0" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="20" y1="0" x2="20" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="40" y1="0" x2="40" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="60" y1="0" x2="60" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="80" y1="0" x2="80" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="100" y1="0" x2="100" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="120" y1="0" x2="120" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="140" y1="0" x2="140" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="160" y1="0" x2="160" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="180" y1="0" x2="180" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="200" y1="0" x2="200" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="220" y1="0" x2="220" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="240" y1="0" x2="240" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="260" y1="0" x2="260" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="280" y1="0" x2="280" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="300" y1="0" x2="300" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="320" y1="0" x2="320" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="340" y1="0" x2="340" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="360" y1="0" x2="360" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="380" y1="0" x2="380" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="400" y1="0" x2="400" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="420" y1="0" x2="420" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="440" y1="0" x2="440" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="460" y1="0" x2="460" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="480" y1="0" x2="480" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="500" y1="0" x2="500" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="520" y1="0" x2="520" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="540" y1="0" x2="540" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="560" y1="0" x2="560" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="0" x2="560" y2="0" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="20" x2="560" y2="20" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="40" x2="560" y2="40" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="60" x2="560" y2="60" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="80" x2="560" y2="80" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="100" x2="560" y2="100" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="120" x2="560" y2="120" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="140" x2="560" y2="140" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="160" x2="560" y2="160" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="180" x2="560" y2="180" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="200" x2="560" y2="200" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="220" x2="560" y2="220" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="240" x2="560" y2="240" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="260" x2="560" y2="260" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="280" x2="560" y2="280" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="300" x2="560" y2="300" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="320" x2="560" y2="320" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="340" x2="560" y2="340" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="360" x2="560" y2="360" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="380" x2="560" y2="380" stroke="#E5E7EB" stroke-width="0.5"/>
+          <line x1="0" y1="400" x2="560" y2="400" stroke="#E5E7EB" stroke-width="0.5"/>
+
+          <!-- Conveyor belt -->
+          <rect x="0" y="260" width="560" height="8" fill="#0A0A0A"/>
+          <rect x="0" y="272" width="560" height="3" fill="#D1D5DB"/>
+
+          <!-- Object 1 — PASS -->
+          <rect x="60" y="210" width="60" height="50" stroke="#0A0A0A" stroke-width="2" fill="#F9FAFB"/>
+          <text x="90" y="240" text-anchor="middle" font-size="9" font-family="monospace" fill="#6B7280">OK</text>
+          <rect x="56" y="206" width="68" height="58" stroke="#059669" stroke-width="1.5" fill="none"/>
+
+          <!-- Object 2 — DEFECT (scanning) -->
+          <rect x="200" y="200" width="70" height="60" stroke="#0A0A0A" stroke-width="2" fill="#F9FAFB"/>
+          <rect x="218" y="218" width="14" height="14" fill="#DC2626" opacity="0.15" stroke="#DC2626" stroke-width="1"/>
+          <line x1="220" y1="220" x2="230" y2="230" stroke="#DC2626" stroke-width="1.5"/>
+          <line x1="230" y1="220" x2="220" y2="230" stroke="#DC2626" stroke-width="1.5"/>
+          <rect x="195" y="195" width="80" height="70" stroke="#059669" stroke-width="2" fill="none" stroke-dasharray="5 3"/>
+          <line class="scan-line" x1="195" y1="220" x2="275" y2="220" stroke="#059669" stroke-width="1.5" opacity="0.7"/>
+
+          <!-- Object 3 — QUEUE -->
+          <rect x="370" y="215" width="55" height="45" stroke="#0A0A0A" stroke-width="2" fill="#F9FAFB"/>
+          <rect x="420" y="208" width="50" height="52" stroke="#0A0A0A" stroke-width="2" fill="#F9FAFB"/>
+
+          <!-- Camera/sensor overhead -->
+          <rect x="210" y="60" width="50" height="30" fill="#0A0A0A"/>
+          <rect x="225" y="90" width="20" height="15" fill="#374151"/>
+          <circle cx="235" cy="75" r="10" stroke="#059669" stroke-width="2" fill="#1F2937"/>
+          <circle cx="235" cy="75" r="4" fill="#059669" class="blink-dot"/>
+          <line x1="225" y1="105" x2="195" y2="195" stroke="#059669" stroke-width="0.75" opacity="0.4" stroke-dasharray="4 3"/>
+          <line x1="245" y1="105" x2="275" y2="195" stroke="#059669" stroke-width="0.75" opacity="0.4" stroke-dasharray="4 3"/>
+
+          <!-- Data overlay panel -->
+          <rect x="380" y="40" width="160" height="110" fill="#0A0A0A" opacity="0.92"/>
+          <rect x="380" y="40" width="160" height="110" stroke="#059669" stroke-width="1" fill="none"/>
+          <text x="392" y="60" font-size="9" font-family="monospace" fill="#059669">LIVE MONITORING</text>
+          <line x1="380" y1="66" x2="540" y2="66" stroke="#059669" stroke-width="0.5" opacity="0.4"/>
+          <text x="392" y="82" font-size="9" font-family="monospace" fill="#9CA3AF">Throughput</text>
+          <text x="500" y="82" font-size="9" font-family="monospace" fill="#FFFFFF" text-anchor="end">1,247/hr</text>
+          <text x="392" y="98" font-size="9" font-family="monospace" fill="#9CA3AF">Defect Rate</text>
+          <text x="500" y="98" font-size="9" font-family="monospace" fill="#059669" text-anchor="end">0.12%</text>
+          <text x="392" y="114" font-size="9" font-family="monospace" fill="#9CA3AF">Waste Index</text>
+          <text x="500" y="114" font-size="9" font-family="monospace" fill="#FFFFFF" text-anchor="end">▼ 34%</text>
+          <text x="392" y="130" font-size="9" font-family="monospace" fill="#9CA3AF">Status</text>
+          <circle cx="496" cy="127" r="3" fill="#059669" class="blink-dot"/>
+
+          <!-- Status labels -->
+          <text x="90" y="195" text-anchor="middle" font-size="8" font-family="monospace" fill="#059669">PASS</text>
+          <text x="235" y="185" text-anchor="middle" font-size="8" font-family="monospace" fill="#DC2626">DEFECT</text>
+          <text x="420" y="200" text-anchor="middle" font-size="8" font-family="monospace" fill="#9CA3AF">QUEUE</text>
+
+          <!-- Bottom data bar -->
+          <rect x="0" y="300" width="560" height="50" fill="#0A0A0A" opacity="0.05"/>
+          <text x="30" y="330" font-size="8" font-family="monospace" fill="#6B7280">SHIFT-A | CAM-02 | MODEL v4.2.1 | LATENCY 12ms | UPTIME 99.7%</text>
+
+          <!-- Throughput graph -->
+          <polyline points="30,370 60,360 90,365 120,355 150,350 180,358 210,345 240,340 270,348 300,335 330,330 360,338 390,325 420,320" stroke="#059669" stroke-width="1.5" fill="none"/>
+          <text x="430" y="324" font-size="8" font-family="monospace" fill="#059669">▲ THROUGHPUT</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about" class="bg-zinc-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-3 h-3 bg-emerald-600"></div>
+            <span class="text-xs font-semibold tracking-widest uppercase text-zinc-400">Tentang Kami</span>
+          </div>
+          <h2 class="text-3xl lg:text-4xl font-black tracking-tight leading-tight">
+            Teknologi Presisi untuk Industri yang Lebih Efisien
+          </h2>
+        </div>
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          <p class="text-zinc-300 text-lg leading-relaxed">
+            Nusantara Teknologi Hijau mengembangkan sistem computer vision terapan yang dirancang khusus untuk lingkungan produksi dan manufaktur Indonesia. Kami membangun solusi yang bekerja di kondisi pabrik sesungguhnya — bukan di laboratorium.
+          </p>
+          <p class="text-zinc-400 leading-relaxed">
+            Pendekatan kami menggabungkan otomasi Industry 4.0 dengan prinsip efisiensi material. Setiap sistem yang kami deploy diukur dari tiga parameter: peningkatan akurasi proses, pengurangan waste material, dan percepatan throughput produksi. Tidak ada metrik kosong.
+          </p>
+          <div class="grid grid-cols-2 gap-0 border-t border-zinc-700 mt-4">
+            <div class="py-5 border-r border-zinc-700 pr-5 border-b border-zinc-700">
+              <div class="text-lg font-bold text-white">Industry 4.0</div>
+              <div class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Framework</div>
+            </div>
+            <div class="py-5 pl-5 border-b border-zinc-700">
+              <div class="text-lg font-bold text-white">Real-Time</div>
+              <div class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Processing</div>
+            </div>
+            <div class="py-5 border-r border-zinc-700 pr-5">
+              <div class="text-lg font-bold text-white">On-Premise</div>
+              <div class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Deployment</div>
+            </div>
+            <div class="py-5 pl-5">
+              <div class="text-lg font-bold text-white">Green Tech</div>
+              <div class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Prinsip</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SOLUTIONS ═══ -->
+  <section id="solutions" class="max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-3 h-3 bg-emerald-600"></div>
+      <span class="text-xs font-semibold tracking-widest uppercase text-zinc-500">Solusi Kami</span>
+    </div>
+    <h2 class="text-3xl lg:text-4xl font-black tracking-tight mb-4 max-w-2xl">
+      Empat Pilar Otomasi Visual untuk Manufaktur
+    </h2>
+    <p class="text-zinc-500 max-w-2xl mb-14 text-lg">
+      Setiap modul dapat di-deploy independen atau sebagai sistem terintegrasi sesuai kebutuhan operasional Anda.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-2 border-zinc-900">
+      <!-- Solution 1 -->
+      <div class="p-8 lg:p-10 md:border-r-2 md:border-zinc-900 border-b-2 border-zinc-900">
+        <div class="flex items-start justify-between mb-6">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="4" width="28" height="28" stroke="#0A0A0A" stroke-width="2" fill="none"/><line x1="18" y1="4" x2="18" y2="32" stroke="#059669" stroke-width="1"/><line x1="4" y1="18" x2="32" y2="18" stroke="#059669" stroke-width="1"/><circle cx="18" cy="18" r="8" stroke="#0A0A0A" stroke-width="2" fill="none"/><line x1="32" y1="32" x2="44" y2="44" stroke="#0A0A0A" stroke-width="2.5"/><rect x="14" y="14" width="8" height="8" stroke="#059669" stroke-width="1.5" fill="none" stroke-dasharray="2 2"/></svg>
+          <span class="text-xs font-bold text-zinc-300 tracking-widest">01</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 tracking-tight">Quality Control &amp; Deteksi Defect</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Inspeksi visual otomatis pada setiap unit produksi. Sistem mendeteksi cacat permukaan, dimensi di luar toleransi, dan anomali material secara real-time dengan akurasi hingga 99.8%. Menggantikan inspeksi manual yang lambat dan inkonsisten.</p>
+      </div>
+      <!-- Solution 2 -->
+      <div class="p-8 lg:p-10 border-b-2 border-zinc-900">
+        <div class="flex items-start justify-between mb-6">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M8 28 L8 20 C8 12 15 6 24 6 C33 6 40 12 40 20 L40 28 Z" stroke="#0A0A0A" stroke-width="2" fill="none"/><line x1="4" y1="28" x2="44" y2="28" stroke="#0A0A0A" stroke-width="2.5"/><rect x="12" y="32" width="24" height="12" stroke="#059669" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/><line x1="16" y1="14" x2="32" y2="14" stroke="#059669" stroke-width="0.75" opacity="0.6"/><line x1="14" y1="18" x2="34" y2="18" stroke="#059669" stroke-width="0.75" opacity="0.6"/><line x1="12" y1="22" x2="36" y2="22" stroke="#059669" stroke-width="0.75" opacity="0.6"/></svg>
+          <span class="text-xs font-bold text-zinc-300 tracking-widest">02</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 tracking-tight">Keselamatan Kerja &amp; Monitoring APD</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Pemantauan kepatuhan APD secara kontinu di seluruh area produksi. Deteksi otomatis helm, kacamata safety, sarung tangan, dan rompi. Alert instan ke supervisor saat terjadi pelanggaran. Mengurangi risiko kecelakaan kerja secara terukur.</p>
+      </div>
+      <!-- Solution 3 -->
+      <div class="p-8 lg:p-10 md:border-r-2 md:border-zinc-900">
+        <div class="flex items-start justify-between mb-6">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><line x1="2" y1="24" x2="46" y2="24" stroke="#0A0A0A" stroke-width="2"/><rect x="8" y="18" width="8" height="12" stroke="#0A0A0A" stroke-width="1.5" fill="none"/><rect x="20" y="18" width="8" height="12" stroke="#0A0A0A" stroke-width="1.5" fill="none"/><rect x="32" y="18" width="8" height="12" stroke="#0A0A0A" stroke-width="1.5" fill="none"/><polyline points="2,10 24,4 46,10" stroke="#059669" stroke-width="1.5" fill="none"/><polyline points="40,7 46,10 40,13" stroke="#059669" stroke-width="1.5" fill="none"/><circle cx="12" cy="40" r="2" fill="#0A0A0A"/><circle cx="24" cy="36" r="2" fill="#059669"/><circle cx="36" cy="38" r="2" fill="#0A0A0A"/><line x1="12" y1="40" x2="24" y2="36" stroke="#0A0A0A" stroke-width="1"/><line x1="24" y1="36" x2="36" y2="38" stroke="#0A0A0A" stroke-width="1"/></svg>
+          <span class="text-xs font-bold text-zinc-300 tracking-widest">03</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 tracking-tight">Optimasi Lini Produksi</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Analisis pergerakan material, waktu siklus, dan bottleneck pada lini produksi menggunakan computer vision. Mengidentifikasi inefisiensi yang tidak terlihat oleh pengawasan manual. Data real-time untuk keputusan operasional yang lebih cepat.</p>
+      </div>
+      <!-- Solution 4 -->
+      <div class="p-8 lg:p-10">
+        <div class="flex items-start justify-between mb-6">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><line x1="6" y1="6" x2="6" y2="42" stroke="#0A0A0A" stroke-width="2"/><line x1="6" y1="42" x2="42" y2="42" stroke="#0A0A0A" stroke-width="2"/><rect x="12" y="12" width="6" height="30" fill="#0A0A0A" opacity="0.15"/><rect x="12" y="12" width="6" height="30" stroke="#0A0A0A" stroke-width="1" fill="none"/><rect x="22" y="20" width="6" height="22" fill="#0A0A0A" opacity="0.1"/><rect x="22" y="20" width="6" height="22" stroke="#0A0A0A" stroke-width="1" fill="none"/><rect x="32" y="30" width="6" height="12" fill="#059669" opacity="0.15"/><rect x="32" y="30" width="6" height="12" stroke="#059669" stroke-width="1.5" fill="none"/><polyline points="42,8 42,20 38,16" stroke="#059669" stroke-width="1.5" fill="none"/></svg>
+          <span class="text-xs font-bold text-zinc-300 tracking-widest">04</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 tracking-tight">Analitik Pengurangan Waste</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Klasifikasi dan kuantifikasi waste material secara otomatis. Melacak sumber pemborosan di setiap tahap produksi. Menyediakan data akurat untuk target pengurangan limbah dan mendukung inisiatif green manufacturing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section id="cta" class="bg-zinc-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-3 h-3 bg-emerald-600"></div>
+            <span class="text-xs font-semibold tracking-widest uppercase text-zinc-400">Mulai Sekarang</span>
+          </div>
+          <h2 class="text-3xl lg:text-4xl font-black tracking-tight leading-tight mb-6">
+            Siap Mengukur Dampak Nyata di Lini Produksi Anda?
+          </h2>
+          <p class="text-zinc-400 text-lg leading-relaxed max-w-lg">
+            Kami tidak menjual janji — kami menyediakan sistem yang terukur. Jadwalkan sesi teknis untuk membahas kebutuhan spesifik operasional Anda. Tanpa komitmen.
+          </p>
+        </div>
+        <div class="border-2 border-zinc-700 p-8 lg:p-10">
+          <div class="flex flex-col gap-5">
+            <div>
+              <label class="text-xs font-semibold tracking-widest uppercase text-zinc-500 mb-2 block">Nama</label>
+              <input id="ctaNama" type="text" class="w-full bg-transparent border-b-2 border-zinc-600 py-3 text-white text-sm transition-colors" placeholder="Nama lengkap">
+              <div id="errNama" class="validation-msg">Silakan isi nama Anda.</div>
+            </div>
+            <div>
+              <label class="text-xs font-semibold tracking-widest uppercase text-zinc-500 mb-2 block">Perusahaan</label>
+              <input id="ctaPerusahaan" type="text" class="w-full bg-transparent border-b-2 border-zinc-600 py-3 text-white text-sm transition-colors" placeholder="Nama perusahaan">
+              <div id="errPerusahaan" class="validation-msg">Silakan isi nama perusahaan.</div>
+            </div>
+            <div>
+              <label class="text-xs font-semibold tracking-widest uppercase text-zinc-500 mb-2 block">Email</label>
+              <input id="ctaEmail" type="email" class="w-full bg-transparent border-b-2 border-zinc-600 py-3 text-white text-sm transition-colors" placeholder="email@perusahaan.com">
+              <div id="errEmail" class="validation-msg">Silakan isi alamat email yang valid.</div>
+            </div>
+            <button id="ctaSubmit" class="mt-4 w-full bg-emerald-600 text-white py-4 text-sm font-bold tracking-widest uppercase btn-primary cursor-pointer">
+              Jadwalkan Sesi Teknis
+            </button>
+            <p class="text-xs text-zinc-600 text-center">Respons dalam 1×24 jam kerja. Data Anda tidak dibagikan ke pihak ketiga.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="border-t-2 border-zinc-900 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="76" height="76" stroke="#0A0A0A" stroke-width="3" fill="none"/>
+          <line x1="2" y1="27" x2="78" y2="27" stroke="#0A0A0A" stroke-width="0.75" opacity="0.25"/>
+          <line x1="2" y1="53" x2="78" y2="53" stroke="#0A0A0A" stroke-width="0.75" opacity="0.25"/>
+          <line x1="27" y1="2" x2="27" y2="78" stroke="#0A0A0A" stroke-width="0.75" opacity="0.25"/>
+          <line x1="53" y1="2" x2="53" y2="78" stroke="#0A0A0A" stroke-width="0.75" opacity="0.25"/>
+          <text x="40" y="48" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',sans-serif" font-size="26" font-weight="900" fill="#0A0A0A" letter-spacing="2">NTH</text>
+          <rect x="2" y="72" width="76" height="6" fill="#059669"/>
+          <polyline points="2,14 2,2 14,2" stroke="#059669" stroke-width="2.5" fill="none"/>
+          <polyline points="66,2 78,2 78,14" stroke="#059669" stroke-width="2.5" fill="none"/>
+        </svg>
+        <span class="text-xs font-bold tracking-widest uppercase">NTH</span>
+      </div>
+      <p class="text-xs text-zinc-400 tracking-wider">© 2026 Nusantara Teknologi Hijau. Seluruh hak dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const iconOpen = document.getElementById('menuIconOpen');
+    const iconClose = document.getElementById('menuIconClose');
+
+    menuBtn.addEventListener('click', function() {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      if (isOpen) {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      }
+    });
+
+    // Close mobile menu on nav link click
+    document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    // CTA form → mailto
+    document.getElementById('ctaSubmit').addEventListener('click', function() {
+      var nama = document.getElementById('ctaNama').value.trim();
+      var perusahaan = document.getElementById('ctaPerusahaan').value.trim();
+      var email = document.getElementById('ctaEmail').value.trim();
+
+      // Reset validation
+      document.getElementById('errNama').classList.remove('show');
+      document.getElementById('errPerusahaan').classList.remove('show');
+      document.getElementById('errEmail').classList.remove('show');
+
+      var valid = true;
+
+      if (!nama) {
+        document.getElementById('errNama').classList.add('show');
+        valid = false;
+      }
+      if (!perusahaan) {
+        document.getElementById('errPerusahaan').classList.add('show');
+        valid = false;
+      }
+      if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+        document.getElementById('errEmail').classList.add('show');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      var subject = encodeURIComponent('Permintaan Sesi Teknis — ' + perusahaan);
+      var body = encodeURIComponent(
+        'Halo Tim Nusantara Teknologi Hijau,\n\n' +
+        'Saya ingin menjadwalkan sesi teknis untuk membahas solusi computer vision.\n\n' +
+        'Nama: ' + nama + '\n' +
+        'Perusahaan: ' + perusahaan + '\n' +
+        'Email: ' + email + '\n\n' +
+        'Mohon informasi jadwal yang tersedia.\n\n' +
+        'Terima kasih.'
+      );
+
+      window.location.href = 'mailto:EMAILANDA@DOMAIN.COM?subject=' + subject + '&body=' + body;
+    });
+  </script>
+
+</body>
+</html>
