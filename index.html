@@ -6,55 +6,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="Nusantara Teknologi Hijau (NTH) — perusahaan teknologi berbasis AI, IoT, dan sistem digital terintegrasi untuk mendukung industri yang efisien, modern, dan ramah lingkungan." />
-  <meta name="theme-color" content="#065f46" />
+  <meta name="theme-color" content="#4CA547" />
   <meta property="og:title" content="Nusantara Teknologi Hijau | Solusi AI, IoT, dan Sistem Digital" />
   <meta property="og:description"
     content="Solusi teknologi berbasis AI, IoT, dan sistem digital terintegrasi untuk industri yang efisien, modern, dan ramah lingkungan." />
   <meta property="og:type" content="website" />
   <meta name="robots" content="index, follow" />
-  <!-- Favicon (placeholder — letakkan file di assets/logo/nth-favicon.png) -->
-  <link rel="icon" type="image/png" href="assets/logo/nth-favicon.png" />
-  <link rel="apple-touch-icon" href="assets/logo/nth-favicon.png" />
+
+  <!-- Google Fonts: Inter (modern, clean) + Sora (premium heading) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap"
+    rel="stylesheet">
+
   <title>Nusantara Teknologi Hijau | Solusi AI, IoT, dan Sistem Digital</title>
   <style>
     /* ============================================
-     DESIGN TOKENS
-     ============================================ */
+       DESIGN TOKENS - NEW GREEN PALETTE
+       Hijau Tua: #4CA547
+       Hijau Muda: #5DBD77
+       ============================================ */
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f6faf8;
-      --bg-dark: #0a1f16;
-      --border: #e6ebe8;
-      --border-subtle: #eef2f0;
-      --text: #0f1a14;
-      --text-muted: #556660;
-      --text-light: #7a8a84;
-      --primary: #059669;
-      --primary-dark: #047857;
-      --primary-darker: #065f46;
-      --primary-light: #10b981;
-      --primary-subtle: #ecfdf5;
-      --primary-soft: #d1fae5;
-      --accent: #064e3b;
+      /* Primary palette */
+      --green-dark: #4CA547;
+      --green-main: #5DBD77;
+      --green-light: #85D69A;
+      --green-emerald: #398A35;
+      --green-lime: #D4F4D9;
+      --green-forest: #102A13;
 
+      /* Neutrals */
+      --neutral-50: #F9FAFB;
+      --neutral-100: #F3F4F6;
+      --neutral-200: #E5E7EB;
+      --neutral-300: #D1D5DB;
+      --neutral-600: #4B5563;
+      --neutral-700: #374151;
+      --neutral-800: #1F2937;
+      --neutral-900: #111827;
+
+      /* Text */
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-light: #9CA3AF;
+      --text-on-dark: #F9FAFB;
+      --text-on-dark-secondary: rgba(249, 250, 251, 0.85);
+
+      /* Backgrounds */
+      --bg-primary: #F9FAFB;
+      --bg-secondary: #F3F4F6;
+      --bg-dark: #16361A;
+      --bg-dark-deep: #0D2210;
+      --surface: #FFFFFF;
+
+      /* Borders & Shadows */
+      --border-light: #E5E7EB;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+
+      /* Typography & Layout */
+      --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --radius-sm: 8px;
-      --radius: 12px;
-      --radius-lg: 20px;
-      --radius-xl: 28px;
-
-      --shadow-sm: 0 1px 2px rgba(6, 78, 59, 0.04);
-      --shadow: 0 4px 14px rgba(6, 78, 59, 0.06);
-      --shadow-lg: 0 16px 40px rgba(6, 78, 59, 0.1);
-
-      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-
-      --max-w: 1200px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
       --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --max-w: 1280px;
     }
 
     /* ============================================
-     BASE
-     ============================================ */
+       BASE STYLES
+       ============================================ */
     *,
     *::before,
     *::after {
@@ -70,13 +93,12 @@
     }
 
     body {
-      font-family: var(--font);
+      font-family: var(--font-body);
       font-size: 16px;
       line-height: 1.6;
-      color: var(--text);
-      background: var(--bg);
+      color: var(--text-primary);
+      background: var(--bg-primary);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
@@ -87,103 +109,92 @@
     }
 
     a {
-      color: var(--primary-dark);
+      color: var(--green-dark);
+      text-decoration: none;
+      transition: color 0.2s var(--ease);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
     }
 
     ::selection {
-      background: var(--primary-soft);
-      color: var(--primary-darker);
+      background: var(--green-main);
+      color: white;
     }
 
     /* ============================================
-     NAVIGATION
-     ============================================ */
+       NAVIGATION
+       ============================================ */
     .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: saturate(180%) blur(14px);
-      -webkit-backdrop-filter: saturate(180%) blur(14px);
-      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(249, 250, 251, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s var(--ease);
     }
 
     .nav-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 14px 24px;
+      padding: 16px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 24px;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
+      gap: 12px;
+      color: var(--text-primary);
       font-weight: 700;
       font-size: 15px;
-      letter-spacing: -0.01em;
+      transition: opacity 0.2s;
+    }
+
+    .logo:hover {
+      opacity: 0.8;
     }
 
     .logo-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-darker) 100%);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-main) 100%);
       color: white;
       display: grid;
       place-items: center;
-      font-weight: 800;
-      font-size: 15px;
-      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.35);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-mark::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.18) 50%, transparent 60%);
+      font-family: var(--font-heading);
+      font-size: 16px;
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
     }
 
     .logo-text {
-      line-height: 1.1;
+      line-height: 1.2;
     }
 
     .logo-text small {
       display: block;
+      font-family: var(--font-body);
       font-size: 11px;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    /* Logo image placeholder — hidden by default; revealed only when the
-     file at assets/logo/nth-logo-full.png successfully loads. On failure,
-     the <img> removes itself so the text-based fallback (mark + name)
-     remains visible and no broken-image icon is shown. */
-    .logo-img {
-      display: none;
-      height: 40px;
-      width: auto;
-      max-width: 220px;
-      object-fit: contain;
-    }
-
-    .logo-img.loaded {
-      display: block;
-    }
-
-    .logo-img.loaded~.logo-mark,
-    .logo-img.loaded~.logo-text {
-      display: none;
+      margin-top: 2px;
     }
 
     .nav-links {
@@ -191,246 +202,187 @@
       align-items: center;
       gap: 4px;
       list-style: none;
+      flex: 1;
+      justify-content: center;
     }
 
     .nav-links a {
       display: inline-block;
-      padding: 8px 14px;
-      color: var(--text-muted);
-      text-decoration: none;
+      padding: 8px 16px;
+      color: var(--text-secondary);
       font-size: 14px;
       font-weight: 500;
-      border-radius: 8px;
-      transition: color 0.2s, background 0.2s;
+      border-radius: var(--radius-md);
+      transition: all 0.2s var(--ease);
     }
 
     .nav-links a:hover {
-      color: var(--primary-dark);
-      background: var(--primary-subtle);
+      color: var(--green-dark);
+      background: var(--bg-secondary);
     }
 
     .nav-cta {
-      background: var(--primary) !important;
-      color: white !important;
-      padding: 9px 18px !important;
+      color: var(--green-dark) !important;
+      font-weight: 600 !important;
+      border: 1.5px solid var(--green-dark);
+      padding: 8px 18px !important;
       margin-left: 8px;
-      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
     }
 
     .nav-cta:hover {
-      background: var(--primary-dark) !important;
+      background: var(--green-dark);
       color: white !important;
     }
 
     .nav-toggle {
       display: none;
       background: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-md);
       padding: 8px;
       cursor: pointer;
-      color: var(--text);
-    }
-
-    .nav-toggle:hover {
-      background: var(--bg-alt);
+      color: var(--text-primary);
     }
 
     /* ============================================
-     HERO
-     ============================================ */
-    .hero {
-      position: relative;
-      padding: 140px 24px 100px;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse 900px 500px at 20% 0%, rgba(16, 185, 129, 0.10), transparent 60%),
-        radial-gradient(ellipse 700px 400px at 90% 10%, rgba(5, 150, 105, 0.08), transparent 60%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(5, 150, 105, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(5, 150, 105, 0.035) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 80%);
+       GLOBAL CANVAS (INTERACTIVE FLOW)
+       ============================================ */
+    #flowCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -5;
       pointer-events: none;
     }
 
-    .hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
       position: relative;
-    }
-
-    .badge {
-      display: inline-flex;
+      min-height: 100vh;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid var(--primary-soft);
-      color: var(--primary-darker);
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 28px;
-      backdrop-filter: blur(6px);
+      padding: 160px 32px 120px;
+      isolation: isolate;
+      color: var(--text-on-dark);
+      background: linear-gradient(135deg, rgba(16, 42, 19, 0.92) 0%, rgba(13, 34, 16, 0.96) 100%);
+      overflow: hidden;
     }
 
-    .badge .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--primary);
-      animation: pulse 2s infinite;
+    .hero-image-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      mix-blend-mode: overlay;
     }
 
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 0.6;
-        transform: scale(1.3);
-      }
+    .hero-bg-img {
+      /* Opacity ditingkatkan ke 30% (0.3) */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
     }
 
-    .hero h1 {
-      font-size: clamp(2rem, 5.5vw, 3.6rem);
-      font-weight: 800;
-      line-height: 1.12;
-      letter-spacing: -0.025em;
-      margin-bottom: 22px;
-      color: var(--text);
+    .hero-content {
+      position: relative;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      z-index: 1;
     }
 
-    .hero h1 .gradient {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-darker) 60%, var(--accent) 100%);
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 920px;
+      color: white;
+    }
+
+    .hero-content h1 .em {
+      background: linear-gradient(120deg, var(--green-light) 0%, var(--green-main) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      display: inline-block;
     }
 
     .hero-sub {
-      font-size: clamp(1rem, 1.8vw, 1.15rem);
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 36px;
-      line-height: 1.65;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--green-lime);
+      max-width: 580px;
+      margin-bottom: 36px;
+      opacity: 0.9;
     }
 
     .hero-ctas {
       display: flex;
-      gap: 12px;
-      justify-content: center;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 48px;
+      align-items: center;
     }
 
-    .hero-meta {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
-      padding-top: 32px;
-      border-top: 1px solid var(--border-subtle);
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .hero-meta-item {
-      text-align: center;
-    }
-
-    .hero-meta-item .k {
-      display: block;
-      font-size: 12px;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-
-    .hero-meta-item .v {
-      font-size: 14px;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    /* ============================================
-     BUTTONS
-     ============================================ */
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      padding: 12px 22px;
-      border-radius: 10px;
+      padding: 14px 32px;
+      border-radius: var(--radius-md);
       font-weight: 600;
       font-size: 15px;
-      text-decoration: none;
+      border: none;
       cursor: pointer;
-      border: 1px solid transparent;
-      transition: all 0.2s var(--ease);
-      white-space: nowrap;
-      font-family: inherit;
+      transition: all 0.3s var(--ease);
+      font-family: var(--font-body);
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: var(--green-main);
       color: white;
-      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+      box-shadow: var(--shadow-md);
     }
 
     .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+      background: var(--green-light);
+      color: var(--green-forest);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
     .btn-secondary {
-      background: white;
-      color: var(--text);
-      border-color: var(--border);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
     }
 
     .btn-secondary:hover {
-      border-color: var(--primary);
-      color: var(--primary-dark);
-      background: var(--primary-subtle);
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--green-light);
     }
 
-    .btn svg {
-      transition: transform 0.2s;
+    .btn .arr {
+      transition: transform 0.3s var(--ease);
     }
 
-    .btn:hover svg.arr {
-      transform: translateX(2px);
+    .btn-primary:hover .arr {
+      transform: translateX(4px);
     }
 
     /* ============================================
-     SECTIONS
-     ============================================ */
+       SECTION COMMON STYLES
+       ============================================ */
     .section {
-      padding: 100px 24px;
-      position: relative;
-    }
-
-    .section-alt {
-      background: var(--bg-alt);
+      padding: 96px 32px;
+      background: var(--bg-primary);
     }
 
     .section-inner {
@@ -438,648 +390,453 @@
       margin: 0 auto;
     }
 
-    .section-header {
-      text-align: center;
-      margin-bottom: 56px;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     .section-label {
       display: inline-block;
-      color: var(--primary-dark);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 14px;
-      padding: 4px 12px;
-      background: var(--primary-subtle);
-      border-radius: 999px;
-    }
-
-    .section-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.4rem);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-    }
-
-    .section-desc {
-      color: var(--text-muted);
-      font-size: 1.02rem;
-      line-height: 1.65;
-    }
-
-    /* ============================================
-     OVERVIEW
-     ============================================ */
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-    }
-
-    .overview-text .section-label {
-      margin-bottom: 16px;
-    }
-
-    .overview-text h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-
-    .overview-text p {
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .overview-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    .overview-highlights {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .highlight-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      transition: all 0.25s var(--ease);
-    }
-
-    .highlight-card:hover {
-      border-color: var(--primary-soft);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-
-    .highlight-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--primary-subtle);
-      color: var(--primary-dark);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 14px;
-    }
-
-    .highlight-card h4 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-
-    .highlight-card p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    /* ============================================
-     VISION & MISSION
-     ============================================ */
-    .vm-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.25fr;
-      gap: 24px;
-    }
-
-    .vm-card {
-      padding: 40px;
-      border-radius: var(--radius-lg);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .vision-card {
-      background: linear-gradient(135deg, var(--primary-darker) 0%, var(--accent) 70%, var(--bg-dark) 100%);
-      color: white;
-    }
-
-    .vision-card::before {
-      content: '';
-      position: absolute;
-      top: -60%;
-      right: -30%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.25), transparent 60%);
-      pointer-events: none;
-    }
-
-    .vision-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-      background-size: 100% 32px;
-      opacity: 0.4;
-      pointer-events: none;
-    }
-
-    .mission-card {
-      background: white;
-      border: 1px solid var(--border);
-    }
-
-    .vm-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 12px;
-      border-radius: 999px;
+      color: var(--green-dark);
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 22px;
-      position: relative;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
     }
 
-    .vision-card .vm-label {
-      background: rgba(255, 255, 255, 0.12);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+    .section-dark .section-label {
+      color: var(--green-main);
     }
 
-    .mission-card .vm-label {
-      background: var(--primary-subtle);
-      color: var(--primary-darker);
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--text-primary);
+      max-width: 720px;
+      margin-bottom: 12px;
     }
 
-    .vm-card h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-      letter-spacing: -0.01em;
-      position: relative;
+    .section-dark .section-title {
+      color: var(--text-on-dark);
     }
 
-    .vision-card p {
-      font-size: 1.08rem;
-      line-height: 1.65;
-      color: rgba(255, 255, 255, 0.92);
-      position: relative;
-      max-width: 380px;
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-top: 12px;
     }
 
-    .mission-list {
-      list-style: none;
-      display: grid;
-      gap: 14px;
-    }
-
-    .mission-list li {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 14px 16px;
-      border-radius: var(--radius);
-      background: var(--bg-alt);
-      transition: background 0.2s;
-    }
-
-    .mission-list li:hover {
-      background: var(--primary-subtle);
-    }
-
-    .mission-list .check {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      margin-top: 1px;
-    }
-
-    .mission-list span {
-      font-size: 0.96rem;
-      color: var(--text);
-      line-height: 1.55;
-      font-weight: 500;
+    .section-dark .section-desc {
+      color: var(--text-on-dark-secondary);
     }
 
     /* ============================================
-     PRODUCTS & SERVICES
-     ============================================ */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+       OVERVIEW, VISION, PRODUCTS, ADVANTAGES (Transparent Backgrounds for Canvas)
+       ============================================ */
+    #overview {
+      background: transparent;
     }
 
-    .product-card {
-      background: white;
-      border: 1px solid var(--border);
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .overview-body p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .overview-body p strong {
+      color: var(--green-dark);
+    }
+
+    #vision {
+      background: transparent;
+    }
+
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .vm-quote {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .vm-list {
+      list-style: none;
+    }
+
+    .vm-list li {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .vm-list li:last-child {
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .vm-num {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green-main);
+    }
+
+    .vm-list p {
+      color: var(--text-secondary);
+    }
+
+    #products {
+      background: transparent;
+    }
+
+    .products-head {
+      margin-bottom: 56px;
+    }
+
+    .products-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .product-row {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
       padding: 32px;
       transition: all 0.3s var(--ease);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
 
-    .product-card::before {
+    .product-row::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green-main) 0%, var(--green-dark) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .product-row:hover {
+      border-color: var(--green-main);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .product-row:hover::before {
+      transform: scaleX(1);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 200px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--bg-secondary);
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .product-row:hover .product-img img {
+      transform: scale(1.05);
+    }
+
+    .product-content h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+
+    .product-content p {
+      color: var(--text-secondary);
+    }
+
+    #advantages {
+      background: transparent;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .advantage-item {
+      padding: 32px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .advantage-item::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-light));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s var(--ease);
+      background: linear-gradient(90deg, var(--green-main) 0%, var(--green-light) 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
 
-    .product-card:hover {
-      border-color: var(--primary-soft);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-3px);
+    .advantage-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-main);
     }
 
-    .product-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .product-num {
-      position: absolute;
-      top: 24px;
-      right: 28px;
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--primary-subtle);
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .product-icon {
-      width: 54px;
-      height: 54px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-darker) 100%);
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      color: white;
-      margin-bottom: 22px;
-      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.25);
-      position: relative;
-      z-index: 1;
-    }
-
-    .product-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-      position: relative;
-      z-index: 1;
-    }
-
-    .product-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.65;
-      position: relative;
-      z-index: 1;
+    .advantage-item h4 {
+      margin-bottom: 12px;
     }
 
     /* ============================================
-     ADVANTAGES
-     ============================================ */
-    .advantages-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+       TEAM (ROLLBACK TO ORIGINAL SOLID DESIGN)
+       ============================================ */
+    #team {
+      background: var(--bg-primary);
     }
 
-    .advantage {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      transition: all 0.25s var(--ease);
+    /* Solid background, hiding canvas */
+    .team-head {
+      margin-bottom: 56px;
+      max-width: 720px;
     }
 
-    .advantage:hover {
-      border-color: var(--primary-soft);
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-    }
-
-    .advantage-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--primary-subtle);
-      color: var(--primary-dark);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 16px;
-    }
-
-    .advantage h4 {
-      font-size: 1.02rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-
-    .advantage p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
-    /* ============================================
-     TEAM
-     ============================================ */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 40px;
     }
 
     .team-card {
-      background: white;
-      border: 1px solid var(--border);
+      background: var(--surface);
+      /* Solid white cards */
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
-      padding: 36px 28px;
+      padding: 36px;
       text-align: center;
-      transition: all 0.25s var(--ease);
-    }
-
-    .team-card:hover {
-      border-color: var(--primary-soft);
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-    }
-
-    .team-avatar {
-      width: 84px;
-      height: 84px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-darker) 100%);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      font-size: 28px;
-      letter-spacing: 0.02em;
-      box-shadow: 0 8px 20px rgba(5, 150, 105, 0.25);
-      position: relative;
-    }
-
-    .team-avatar::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary-soft), transparent);
-      z-index: -1;
-      opacity: 0.6;
-    }
-
-    /* Team photo placeholder — hidden by default; revealed only when the
-     file at assets/team/<name>.jpg loads successfully. On failure, the
-     <img> removes itself so the circular initial avatar stays visible. */
-    .team-photo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      display: none;
-    }
-
-    .team-photo.loaded {
-      display: block;
-    }
-
-    .team-photo.loaded~.team-initials {
-      display: none;
-    }
-
-    .team-initials {
-      position: relative;
-      z-index: 1;
-    }
-
-    .team-name {
-      font-size: 1.12rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      letter-spacing: -0.01em;
-    }
-
-    .team-role {
-      display: inline-block;
-      color: var(--primary-dark);
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 3px 10px;
-      background: var(--primary-subtle);
-      border-radius: 999px;
-    }
-
-    .team-bio {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
-    /* ============================================
-     CONTACT
-     ============================================ */
-    .contact-wrap {
-      background: linear-gradient(135deg, var(--primary-darker) 0%, var(--accent) 60%, var(--bg-dark) 100%);
-      color: white;
-      border-radius: var(--radius-xl);
-      padding: 72px 48px;
-      text-align: center;
+      transition: all 0.3s var(--ease);
       position: relative;
       overflow: hidden;
     }
 
-    .contact-wrap::before {
+    .team-card::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.28), transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(5, 150, 105, 0.22), transparent 45%);
-      pointer-events: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-main) 0%, var(--green-light) 50%, var(--green-emerald) 100%);
     }
 
-    .contact-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-      pointer-events: none;
+    .team-card:hover {
+      border-color: var(--green-main);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-6px);
     }
 
-    .contact-wrap>* {
+    .team-avatar {
       position: relative;
-      z-index: 1;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-light);
+      display: grid;
+      place-items: center;
     }
 
-    .contact-label {
+    .team-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .team-photo.loaded {
+      opacity: 1;
+    }
+
+    .team-initials {
+      position: absolute;
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .team-name {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
       display: inline-block;
-      padding: 5px 14px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: white;
-      border-radius: 999px;
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 20px;
+      letter-spacing: 0.1em;
+      color: var(--green-main);
+      margin-bottom: 16px;
     }
 
-    .contact-wrap h2 {
-      font-size: clamp(1.75rem, 3.8vw, 2.6rem);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
+    .team-bio {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       CONTACT & FOOTER (ROLLBACK TO SOLID DARK)
+       ============================================ */
+    .section-dark {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+    }
+
+    #contact {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--green-dark) 100%);
+      position: relative;
+      z-index: 10;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-head h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--text-on-dark);
       margin-bottom: 16px;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .contact-desc {
-      color: rgba(255, 255, 255, 0.88);
+      color: var(--text-on-dark-secondary);
       font-size: 1.05rem;
-      line-height: 1.65;
-      max-width: 620px;
-      margin: 0 auto 36px;
+      line-height: 1.75;
+      margin-bottom: 32px;
     }
 
     .contact-ctas {
       display: flex;
-      gap: 12px;
-      justify-content: center;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 48px;
     }
 
     .btn-wa {
-      background: white;
-      color: var(--primary-darker);
+      background: #25D366;
+      color: white;
+      box-shadow: var(--shadow-md);
     }
 
     .btn-wa:hover {
-      background: #f0fdf4;
-      color: var(--accent);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      background: #1FAE56;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
     .btn-email-dark {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: white;
-      backdrop-filter: blur(10px);
+      background: transparent;
+      color: var(--text-on-dark);
+      border: 1.5px solid var(--text-on-dark);
     }
 
     .btn-email-dark:hover {
-      background: rgba(255, 255, 255, 0.18);
-      border-color: rgba(255, 255, 255, 0.4);
-      color: white;
+      background: rgba(249, 250, 251, 0.1);
+      border-color: var(--green-lime);
+      color: var(--green-lime);
     }
 
     .contact-info {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 760px;
-      margin: 0 auto;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      text-align: left;
+      gap: 32px;
     }
 
     .info-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      align-items: start;
     }
 
     .info-icon {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 9px;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(212, 244, 217, 0.15);
       display: grid;
       place-items: center;
-      color: white;
-    }
-
-    .info-content {
-      min-width: 0;
-      flex: 1;
+      color: var(--green-lime);
+      flex-shrink: 0;
     }
 
     .info-label {
-      font-size: 11px;
+      font-size: 12px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      opacity: 0.7;
-      margin-bottom: 3px;
-      font-weight: 600;
+      color: var(--green-lime);
+      margin-bottom: 4px;
     }
 
     .info-value {
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: white;
-      text-decoration: none;
+      color: var(--text-on-dark);
+      font-size: 1rem;
+      line-height: 1.6;
       word-break: break-word;
-      line-height: 1.4;
+      transition: color 0.2s;
     }
 
-    a.info-value:hover {
-      text-decoration: underline;
+    .info-value:hover {
+      color: var(--green-lime);
     }
 
-    /* ============================================
-     FOOTER
-     ============================================ */
     .footer {
-      padding: 56px 24px 28px;
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border);
+      padding: 64px 32px 32px;
+      background: var(--bg-dark-deep);
+      color: rgba(249, 250, 251, 0.65);
+      border-top: 1px solid rgba(93, 189, 119, 0.1);
+      position: relative;
+      z-index: 10;
     }
 
     .footer-inner {
@@ -1090,73 +847,75 @@
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 40px;
+      gap: 56px;
+      margin-bottom: 48px;
     }
 
     .footer-brand .logo {
+      color: white;
       margin-bottom: 16px;
     }
 
     .footer-brand p {
-      color: var(--text-muted);
-      font-size: 0.94rem;
-      line-height: 1.6;
+      color: rgba(249, 250, 251, 0.65);
+      font-size: 0.95rem;
+      line-height: 1.7;
       max-width: 380px;
     }
 
     .footer h5 {
+      font-family: var(--font-body);
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 18px;
-      color: var(--text);
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      color: rgba(249, 250, 251, 0.9);
       font-weight: 700;
     }
 
     .footer ul {
       list-style: none;
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
 
     .footer ul a,
     .footer ul span {
-      color: var(--text-muted);
+      color: rgba(249, 250, 251, 0.65);
       text-decoration: none;
-      font-size: 0.92rem;
-      transition: color 0.2s;
+      font-size: 0.95rem;
+      transition: color 0.2s var(--ease);
       display: inline-block;
     }
 
     .footer ul a:hover {
-      color: var(--primary-dark);
+      color: var(--green-main);
     }
 
     .footer-bottom {
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      color: var(--text-light);
-      font-size: 0.86rem;
+      color: rgba(249, 250, 251, 0.45);
+      font-size: 0.85rem;
     }
 
     .footer-bottom strong {
-      color: var(--text-muted);
+      color: rgba(249, 250, 251, 0.85);
       font-weight: 600;
     }
 
     /* ============================================
-     UTIL & REVEAL
-     ============================================ */
+       ANIMATIONS & RESPONSIVE
+       ============================================ */
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
     }
 
     .reveal.in {
@@ -1164,184 +923,81 @@
       transform: translateY(0);
     }
 
-    :focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* ============================================
-     RESPONSIVE
-     ============================================ */
     @media (max-width: 960px) {
       .nav-links {
         position: fixed;
         top: 60px;
         left: 0;
         right: 0;
-        background: white;
-        border-bottom: 1px solid var(--border);
+        background: var(--bg-primary);
         flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 12px 20px 20px;
         display: none;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-light);
       }
 
       .nav-links.open {
         display: flex;
       }
 
-      .nav-links li {
-        width: 100%;
-      }
-
       .nav-links a {
         display: block;
-        padding: 12px 14px;
-        border-radius: 8px;
-      }
-
-      .nav-cta {
-        text-align: center;
-        margin-left: 0 !important;
-        margin-top: 6px;
+        padding: 12px 24px;
       }
 
       .nav-toggle {
         display: inline-flex;
       }
 
-      .logo-text .full-name {
-        display: none;
-      }
-
-      .logo-text .short-name {
-        display: inline;
-      }
-
-      .section {
-        padding: 72px 20px;
-      }
-
-      .hero {
-        padding: 120px 20px 64px;
-      }
-
-      .overview-grid {
+      .overview-grid,
+      .vm-grid,
+      .products-list,
+      .contact-grid,
+      .footer-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .vm-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .products-grid {
-        grid-template-columns: 1fr;
+        gap: 48px;
       }
 
       .advantages-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .team-grid {
         grid-template-columns: 1fr;
       }
-
-      .contact-wrap {
-        padding: 56px 28px;
-      }
-
-      .contact-info {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero-meta {
-        gap: 24px;
-      }
     }
 
-    .logo-text .short-name {
-      display: none;
-    }
-
-    @media (max-width: 540px) {
+    @media (max-width: 640px) {
       .hero {
-        padding: 110px 16px 56px;
+        padding: 130px 24px 80px;
       }
 
-      .section {
-        padding: 56px 16px;
-      }
-
-      .overview-highlights {
-        grid-template-columns: 1fr;
+      .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
       }
 
       .advantages-grid {
         grid-template-columns: 1fr;
       }
 
-      .vm-card {
-        padding: 28px 24px;
-      }
-
-      .contact-wrap {
-        padding: 48px 24px;
-        border-radius: var(--radius-lg);
-      }
-
       .hero-ctas {
         flex-direction: column;
+        align-items: stretch;
       }
 
-      .hero-ctas .btn {
+      .btn {
         justify-content: center;
         width: 100%;
       }
 
-      .product-card {
-        padding: 26px 22px;
+      .contact-ctas {
+        flex-direction: column;
       }
 
-      .product-num {
-        font-size: 2.2rem;
-        top: 20px;
-        right: 22px;
-      }
-
-      .footer {
-        padding: 44px 20px 24px;
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
       }
     }
   </style>
@@ -1349,18 +1005,18 @@
 
 <body>
 
+  <!-- INTERACTIVE CANVAS BACKGROUND GLOBAL -->
+  <canvas id="flowCanvas"></canvas>
+
   <!-- =========================================
-     NAVIGATION
-     ========================================= -->
+       NAVIGATION
+       ========================================= -->
   <nav class="nav" aria-label="Navigasi utama">
     <div class="nav-inner">
-      <a href="#hero" class="logo" aria-label="Nusantara Teknologi Hijau — Beranda">
-        <img src="assets/logo/nth-logo-full.png" alt="Nusantara Teknologi Hijau" class="logo-img"
-          onload="this.classList.add('loaded')" onerror="this.remove()" />
+      <a href="#hero" class="logo" aria-label="Nusantara Teknologi Hijau, Beranda">
         <div class="logo-mark" aria-hidden="true">N</div>
         <div class="logo-text">
           <span class="full-name">Nusantara Teknologi Hijau</span>
-          <span class="short-name">NTH</span>
           <small>Solusi Industri Maju &amp; Ramah Lingkungan</small>
         </div>
       </a>
@@ -1372,9 +1028,8 @@
         <li><a href="#team">Tim</a></li>
         <li><a href="#contact" class="nav-cta">Hubungi Kami</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="navLinks">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round">
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 6h18M3 12h18M3 18h18" />
         </svg>
       </button>
@@ -1382,25 +1037,25 @@
   </nav>
 
   <!-- =========================================
-     HERO
-     ========================================= -->
+       HERO
+       ========================================= -->
   <header id="hero" class="hero">
-    <div class="hero-inner">
-      <div class="badge">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Didirikan 1 April 2026</span>
-      </div>
-      <h1>
-        Teknologi yang Mendorong<br />
-        Industri <span class="gradient">Maju &amp; Ramah Lingkungan</span>
+    <!-- Gambar latar hero dengan opacity rendah -->
+    <div class="hero-image-wrap" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80"
+        alt="Tech Background" class="hero-bg-img" />
+    </div>
+
+    <div class="hero-content">
+      <h1 class="reveal">
+        Teknologi yang Mendorong Industri<br />
+        <span class="em">Maju &amp; Ramah Lingkungan.</span>
       </h1>
-      <p class="hero-sub">
-        Nusantara Teknologi Hijau (NTH) mengembangkan solusi berbasis
-        <strong>AI</strong>, <strong>IoT</strong>, dan <strong>sistem digital terintegrasi</strong>
-        untuk mendukung efisiensi operasional, kualitas produk, serta lingkungan
-        industri yang lebih tertata, bersih, dan berkelanjutan.
+      <p class="hero-sub reveal" style="transition-delay: 0.1s;">
+        Solusi AI, IoT, dan sistem digital untuk bisnis yang lebih efisien,
+        modern, dan berkelanjutan.
       </p>
-      <div class="hero-ctas">
+      <div class="hero-ctas reveal" style="transition-delay: 0.2s;">
         <a href="#contact" class="btn btn-primary">
           Hubungi Kami
           <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1410,384 +1065,209 @@
         </a>
         <a href="#products" class="btn btn-secondary">Lihat Layanan</a>
       </div>
-      <div class="hero-meta" aria-label="Informasi perusahaan">
-        <div class="hero-meta-item">
-          <span class="k">Fokus</span>
-          <span class="v">AI · IoT · Sistem Digital</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="k">Sektor</span>
-          <span class="v">Manufaktur · Distribusi · Layanan</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="k">Lokasi</span>
-          <span class="v">Piyungan, D.I. Yogyakarta</span>
-        </div>
-      </div>
     </div>
   </header>
 
   <!-- =========================================
-     COMPANY OVERVIEW
-     ========================================= -->
+       COMPANY OVERVIEW
+       ========================================= -->
   <section id="overview" class="section">
     <div class="section-inner">
-      <div class="overview-grid">
-        <div class="overview-text reveal">
+      <div class="overview-grid reveal">
+        <div class="overview-head">
           <span class="section-label">Tentang Kami</span>
-          <h2>Membangun fondasi digital untuk industri</h2>
+          <h2 class="section-title">Membangun fondasi digital untuk industri yang berkelanjutan.</h2>
+        </div>
+        <div class="overview-body">
           <p>
-            <strong>Nusantara Teknologi Hijau (NTH)</strong> didirikan pada
-            <strong>1 April 2026</strong> sebagai perusahaan yang bergerak di bidang
-            pengembangan teknologi berbasis kecerdasan buatan (AI), Internet of
-            Things (IoT), dan sistem digital terintegrasi untuk mendukung
+            <strong>Nusantara Teknologi Hijau (NTH)</strong> adalah perusahaan yang bergerak di bidang pengembangan
+            teknologi berbasis kecerdasan buatan, Internet of Things, dan sistem digital terintegrasi untuk mendukung
             transformasi industri.
           </p>
           <p>
-            NTH berfokus pada pengembangan solusi inovatif yang membantu perusahaan
-            meningkatkan efisiensi operasional, kualitas produk, serta menciptakan
-            lingkungan industri yang lebih tertata, bersih, dan berkelanjutan.
+            Kami berfokus pada solusi yang membantu perusahaan meningkatkan efisiensi operasional dan kualitas produk,
+            sekaligus menciptakan lingkungan kerja yang lebih tertata, bersih, dan berkelanjutan.
           </p>
-          <p>
-            Produk dan layanan yang dikembangkan mencakup berbagai sektor, mulai
-            dari <strong>manufaktur</strong>, <strong>distribusi</strong>, hingga
-            <strong>bisnis berbasis layanan</strong>.
-          </p>
-        </div>
-        <div class="overview-highlights reveal">
-          <div class="highlight-card">
-            <div class="highlight-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M12 2a4 4 0 0 0-4 4v2H6a4 4 0 0 0-4 4v2a4 4 0 0 0 4 4h2v2a4 4 0 0 0 4 4 4 4 0 0 0 4-4v-2h2a4 4 0 0 0 4-4v-2a4 4 0 0 0-4-4h-2V6a4 4 0 0 0-4-4Z" />
-                <circle cx="12" cy="12" r="2" />
-              </svg>
-            </div>
-            <h4>AI &amp; Computer Vision</h4>
-            <p>Pemanfaatan kecerdasan buatan untuk otomasi dan kendali kualitas.</p>
-          </div>
-          <div class="highlight-card">
-            <div class="highlight-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5" />
-                <path d="M3 12h18v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <path d="M8 16h.01M12 16h.01M16 16h.01" />
-              </svg>
-            </div>
-            <h4>IoT Terintegrasi</h4>
-            <p>Monitoring aset dan otomatisasi proses melalui perangkat terhubung.</p>
-          </div>
-          <div class="highlight-card">
-            <div class="highlight-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M9 21V9" />
-              </svg>
-            </div>
-            <h4>Sistem Digital</h4>
-            <p>Integrasi sistem bisnis untuk operasional yang lebih efisien.</p>
-          </div>
-          <div class="highlight-card">
-            <div class="highlight-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2v6M12 2a5 5 0 0 0-5 5c0 3 2 4 5 6 3-2 5-3 5-6a5 5 0 0 0-5-5Z" />
-                <path d="M5 22c0-4 3-6 7-6s7 2 7 6" />
-              </svg>
-            </div>
-            <h4>Keberlanjutan</h4>
-            <p>Mendukung industri yang lebih bersih dan berkelanjutan.</p>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================
-     VISION & MISSION
-     ========================================= -->
-  <section id="vision" class="section section-alt">
+       VISION & MISSION
+       ========================================= -->
+  <section id="vision" class="section">
     <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-label">Arah &amp; Prinsip</span>
-        <h2 class="section-title">Visi &amp; Misi</h2>
-        <p class="section-desc">
-          Visi yang aspiratif dan misi yang membumi — sebagai fondasi cara NTH
-          membangun solusi teknologi.
-        </p>
-      </div>
       <div class="vm-grid">
-        <div class="vm-card vision-card reveal">
-          <span class="vm-label">Visi</span>
-          <h3>Teknologi untuk industri masa depan</h3>
-          <p>
-            Menjadi perusahaan teknologi terdepan dalam menciptakan solusi digital
-            yang mendukung industri yang efisien, modern, dan ramah lingkungan.
+        <div class="vm-vision reveal">
+          <span class="section-label">Visi</span>
+          <p class="vm-quote">
+            Menjadi perusahaan teknologi terdepan dalam menciptakan solusi digital yang mendukung industri yang efisien,
+            modern, dan ramah lingkungan.
           </p>
         </div>
-        <div class="vm-card mission-card reveal">
-          <span class="vm-label">Misi</span>
-          <h3>Empat komitmen kerja NTH</h3>
-          <ul class="mission-list">
+        <div class="vm-mission reveal">
+          <span class="section-label">Misi</span>
+          <ol class="vm-list">
             <li>
-              <span class="check" aria-hidden="true">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </span>
-              <span>Mengembangkan produk teknologi yang inovatif dan berkualitas tinggi.</span>
+              <span class="vm-num">01</span>
+              <p>Mengembangkan produk teknologi yang inovatif dan berkualitas tinggi.</p>
             </li>
             <li>
-              <span class="check" aria-hidden="true">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </span>
-              <span>Memberikan solusi yang fleksibel sesuai kebutuhan klien.</span>
+              <span class="vm-num">02</span>
+              <p>Memberikan solusi yang fleksibel sesuai kebutuhan klien.</p>
             </li>
             <li>
-              <span class="check" aria-hidden="true">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </span>
-              <span>Mendukung terciptanya lingkungan industri yang bersih dan terorganisir.</span>
+              <span class="vm-num">03</span>
+              <p>Mendukung terciptanya lingkungan industri yang bersih dan terorganisir.</p>
             </li>
-            <li>
-              <span class="check" aria-hidden="true">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </span>
-              <span>Mengintegrasikan teknologi untuk meningkatkan efisiensi dan produktivitas bisnis.</span>
-            </li>
-          </ul>
+          </ol>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================
-     PRODUCTS & SERVICES
-     ========================================= -->
+       PRODUCTS & SERVICES
+       ========================================= -->
   <section id="products" class="section">
     <div class="section-inner">
-      <div class="section-header reveal">
+      <div class="products-head reveal">
         <span class="section-label">Produk &amp; Layanan</span>
-        <h2 class="section-title">Solusi teknologi untuk kebutuhan industri</h2>
-        <p class="section-desc">
-          Empat lini utama yang dikembangkan NTH untuk menjawab tantangan efisiensi,
-          kualitas, dan kendali operasional.
-        </p>
+        <h2 class="section-title">Lini Layanan Inti</h2>
+        <p class="section-desc">Setiap layanan dirancang untuk menjawab tantangan efisiensi, kualitas, dan kendali
+          operasional secara terintegrasi.</p>
       </div>
-      <div class="products-grid">
-        <article class="product-card reveal">
-          <span class="product-num" aria-hidden="true">01</span>
-          <div class="product-icon" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z" />
-              <circle cx="12" cy="12" r="3" />
-            </svg>
+      <div class="products-list">
+        <article class="product-row reveal">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+              alt="Advanced Quality Control">
           </div>
-          <h3>Advanced Quality Control (QC)</h3>
-          <p>
-            Sistem quality control berbasis <strong>Computer Vision</strong> untuk
-            mendeteksi cacat produk secara otomatis dan real-time.
-          </p>
+          <div class="product-content">
+            <h3>Advanced Quality Control</h3>
+            <p>Sistem quality control berbasis <strong>Computer Vision</strong> untuk mendeteksi cacat produk secara
+              otomatis dan real-time.</p>
+          </div>
         </article>
 
-        <article class="product-card reveal">
-          <span class="product-num" aria-hidden="true">02</span>
-          <div class="product-icon" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="m8 3-5 9 5 9M16 3l5 9-5 9M14 3l-4 18" />
-            </svg>
+        <article class="product-row reveal">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
+              alt="Website Development">
           </div>
-          <h3>Website Development</h3>
-          <p>
-            Layanan pembuatan website profesional untuk
-            <strong>company profile</strong>, <strong>e-commerce</strong>, dan
-            <strong>sistem berbasis web</strong>.
-          </p>
+          <div class="product-content">
+            <h3>Website Development</h3>
+            <p>Layanan pembuatan website profesional untuk <strong>company profile</strong>,
+              <strong>e-commerce</strong>, dan sistem web.</p>
+          </div>
         </article>
 
-        <article class="product-card reveal">
-          <span class="product-num" aria-hidden="true">03</span>
-          <div class="product-icon" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="2" />
-              <path
-                d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M20.49 3.51a12 12 0 0 1 0 16.97M3.51 20.49a12 12 0 0 1 0-16.97" />
-            </svg>
+        <article class="product-row reveal">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+              alt="IoT & RFID Solutions">
           </div>
-          <h3>IoT &amp; RFID Solutions</h3>
-          <p>
-            Pengembangan sistem berbasis IoT dan RFID untuk
-            <strong>monitoring aset</strong>, <strong>tracking barang</strong>,
-            dan <strong>otomatisasi proses industri</strong>.
-          </p>
+          <div class="product-content">
+            <h3>IoT &amp; RFID Solutions</h3>
+            <p>Pengembangan sistem berbasis IoT dan RFID untuk <strong>monitoring aset</strong>, tracking barang, dan
+              otomatisasi.</p>
+          </div>
         </article>
 
-        <article class="product-card reveal">
-          <span class="product-num" aria-hidden="true">04</span>
-          <div class="product-icon" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 3v18h18" />
-              <path d="M7 14l4-4 4 4 5-6" />
-            </svg>
+        <article class="product-row reveal">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+              alt="Analytics Dashboard">
           </div>
-          <h3>Analytics Dashboard</h3>
-          <p>
-            Dashboard interaktif untuk visualisasi data bisnis secara real-time
-            guna mendukung pengambilan keputusan yang lebih cepat dan akurat.
-          </p>
+          <div class="product-content">
+            <h3>Analytics Dashboard</h3>
+            <p>Dashboard interaktif untuk visualisasi data bisnis secara real-time guna mendukung pengambilan keputusan
+              yang akurat.</p>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
   <!-- =========================================
-     COMPETITIVE ADVANTAGES
-     ========================================= -->
-  <section id="advantages" class="section section-alt">
+       COMPETITIVE ADVANTAGES
+       ========================================= -->
+  <section id="advantages" class="section">
     <div class="section-inner">
-      <div class="section-header reveal">
+      <div class="adv-head reveal">
         <span class="section-label">Keunggulan Kompetitif</span>
-        <h2 class="section-title">Keunggulan NTH</h2>
-        <p class="section-desc">
-          Nilai yang kami tawarkan — berfokus pada fleksibilitas, integrasi,
-          dan dukungan implementasi hingga maintenance.
-        </p>
+        <h2 class="section-title">Pendekatan Kerja Kami</h2>
       </div>
       <div class="advantages-grid">
-        <div class="advantage reveal">
-          <div class="advantage-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20V10M18 20V4M6 20v-6" />
-            </svg>
-          </div>
-          <h4>Solusi yang Dapat Disesuaikan</h4>
-          <p>Dirancang mengikuti kebutuhan bisnis masing-masing klien.</p>
+        <div class="advantage-item reveal">
+          <h4>Solusi Disesuaikan</h4>
+          <p>Dirancang mengikuti alur dan kebutuhan bisnis masing-masing klien.</p>
         </div>
-
-        <div class="advantage reveal">
-          <div class="advantage-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="5" r="2" />
-              <circle cx="5" cy="19" r="2" />
-              <circle cx="19" cy="19" r="2" />
-              <path d="M12 7v4M7.5 17.5 11 11M16.5 17.5 13 11" />
-            </svg>
-          </div>
-          <h4>Integrasi Antar Sistem</h4>
-          <p>Beragam modul saling terhubung dalam satu ekosistem yang konsisten.</p>
+        <div class="advantage-item reveal">
+          <h4>Integrasi Sistem</h4>
+          <p>Modul-modul saling terhubung dalam satu ekosistem digital yang utuh.</p>
         </div>
-
-        <div class="advantage reveal">
-          <div class="advantage-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-            </svg>
-          </div>
-          <h4>Berbasis Teknologi Modern</h4>
-          <p>Mengadopsi AI, IoT, dan Data Analytics dalam pengembangan solusi.</p>
-        </div>
-
-        <div class="advantage reveal">
-          <div class="advantage-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <path d="m9 11 3 3L22 4" />
-            </svg>
-          </div>
-          <h4>Fokus Efisiensi &amp; Sustainability</h4>
-          <p>Mendukung produktivitas tanpa melupakan aspek keberlanjutan.</p>
-        </div>
-
-        <div class="advantage reveal">
-          <div class="advantage-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-            </svg>
-          </div>
-          <h4>Dukungan Implementasi &amp; Maintenance</h4>
-          <p>Pendampingan saat penerapan hingga pemeliharaan sistem.</p>
+        <div class="advantage-item reveal">
+          <h4>Teknologi Modern</h4>
+          <p>Mengadopsi AI, Machine Learning, dan IoT secara komprehensif.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================
-     MANAGEMENT TEAM
-     ========================================= -->
+       TEAM (Restored to Solid Cards & Images)
+       ========================================= -->
   <section id="team" class="section">
     <div class="section-inner">
-      <div class="section-header reveal">
+      <div class="team-head reveal">
         <span class="section-label">Tim Manajemen</span>
-        <h2 class="section-title">Dipimpin oleh tim lintas bidang</h2>
+        <h2 class="section-title">Dipimpin oleh tim lintas bidang.</h2>
         <p class="section-desc">
-          Struktur manajemen NTH menggabungkan pengalaman di bidang kepemimpinan
-          proyek teknologi, rekayasa sistem, dan pengelolaan keuangan.
+          Struktur manajemen NTH menggabungkan pengalaman di bidang kepemimpinan proyek teknologi, rekayasa sistem, dan
+          pengelolaan keuangan.
         </p>
       </div>
       <div class="team-grid">
         <article class="team-card reveal">
           <div class="team-avatar" aria-hidden="true">
+            <span class="team-initials">HA</span>
             <img src="assets/team/harits-abdul-malik.jpg" alt="" class="team-photo"
               onload="this.classList.add('loaded')" onerror="this.remove()" />
-            <span class="team-initials">HA</span>
           </div>
           <h3 class="team-name">Harits Abdul Malik</h3>
           <span class="team-role">CEO</span>
           <p class="team-bio">
-            Berpengalaman dalam memimpin berbagai proyek teknologi serta mengelola
-            tim lintas bidang dalam pengembangan solusi digital.
+            Berpengalaman dalam memimpin berbagai proyek teknologi serta mengelola tim lintas bidang dalam pengembangan
+            solusi digital.
           </p>
         </article>
 
         <article class="team-card reveal">
           <div class="team-avatar" aria-hidden="true">
+            <span class="team-initials">MF</span>
             <img src="assets/team/muhammad-fuad.jpg" alt="" class="team-photo" onload="this.classList.add('loaded')"
               onerror="this.remove()" />
-            <span class="team-initials">MF</span>
           </div>
           <h3 class="team-name">Muhammad Fuad</h3>
           <span class="team-role">CTO</span>
           <p class="team-bio">
-            Memiliki pengalaman dalam pengembangan dan pengelolaan sistem teknologi,
-            termasuk AI, software engineering, dan integrasi sistem.
+            Memiliki pengalaman dalam pengembangan dan pengelolaan sistem teknologi, termasuk AI, software engineering,
+            dan integrasi sistem.
           </p>
         </article>
 
         <article class="team-card reveal">
           <div class="team-avatar" aria-hidden="true">
+            <span class="team-initials">T</span>
             <img src="assets/team/tamam.jpg" alt="" class="team-photo" onload="this.classList.add('loaded')"
               onerror="this.remove()" />
-            <span class="team-initials">T</span>
           </div>
           <h3 class="team-name">Tamam</h3>
           <span class="team-role">CFO</span>
           <p class="team-bio">
-            Berpengalaman dalam pengelolaan keuangan perusahaan, perencanaan
-            anggaran, dan pengawasan arus kas.
+            Berpengalaman dalam pengelolaan keuangan perusahaan, perencanaan anggaran, dan pengawasan arus kas.
           </p>
         </article>
       </div>
@@ -1795,39 +1275,42 @@
   </section>
 
   <!-- =========================================
-     CONTACT / CTA
-     ========================================= -->
-  <section id="contact" class="section">
+       CONTACT (Restored to Dark Solid)
+       ========================================= -->
+  <section id="contact" class="section section-dark">
     <div class="section-inner">
-      <div class="contact-wrap reveal">
-        <span class="contact-label">Mari Berkolaborasi</span>
-        <h2>Diskusikan kebutuhan teknologi bisnis Anda bersama NTH</h2>
-        <p class="contact-desc">
-          Hubungi kami untuk konsultasi awal — kami akan membantu merancang
-          sistem industri yang lebih efisien, modern, dan berkelanjutan.
-        </p>
-        <div class="contact-ctas">
-          <a href="https://wa.me/6282136248135" target="_blank" rel="noopener noreferrer" class="btn btn-wa"
-            aria-label="Hubungi NTH via WhatsApp">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413" />
-            </svg>
-            Chat WhatsApp
-          </a>
-          <a href="mailto:haritsabdulmalik19@gmail.com" class="btn btn-email-dark" aria-label="Kirim email ke NTH">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-10 6L2 7" />
-            </svg>
-            Kirim Email
-          </a>
+      <div class="contact-grid reveal">
+        <div class="contact-head">
+          <span class="section-label">Mari Berkolaborasi</span>
+          <h2>Diskusikan kebutuhan teknologi bisnis Anda bersama NTH.</h2>
+          <p class="contact-desc">
+            Hubungi kami untuk konsultasi awal. Kami akan membantu merancang
+            sistem industri yang lebih efisien, modern, dan berkelanjutan.
+          </p>
+          <div class="contact-ctas">
+            <a href="https://wa.me/6282136248135" target="_blank" rel="noopener noreferrer" class="btn btn-wa"
+              aria-label="Hubungi NTH via WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413" />
+              </svg>
+              Chat WhatsApp
+            </a>
+            <a href="mailto:haritsabdulmalik19@gmail.com" class="btn btn-email-dark" aria-label="Kirim email ke NTH">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-10 6L2 7" />
+              </svg>
+              Kirim Email
+            </a>
+          </div>
         </div>
+
         <div class="contact-info">
           <div class="info-item">
             <div class="info-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                 <circle cx="12" cy="10" r="3" />
@@ -1840,7 +1323,7 @@
           </div>
           <div class="info-item">
             <div class="info-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                 stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="m22 7-10 6L2 7" />
@@ -1853,7 +1336,7 @@
           </div>
           <div class="info-item">
             <div class="info-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path
                   d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -1871,8 +1354,8 @@
   </section>
 
   <!-- =========================================
-     FOOTER
-     ========================================= -->
+       FOOTER (Restored to Dark Solid)
+       ========================================= -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-grid">
@@ -1881,12 +1364,13 @@
             <div class="logo-mark" aria-hidden="true">N</div>
             <div class="logo-text">
               <span>Nusantara Teknologi Hijau</span>
-              <small>Menjadi Solusi Industri Maju &amp; Ramah Lingkungan</small>
+              <small>Solusi Industri Maju &amp; Ramah Lingkungan</small>
             </div>
           </a>
-          <p>
-            Perusahaan teknologi yang mengembangkan solusi berbasis AI, IoT, dan
-            sistem digital terintegrasi untuk mendukung transformasi industri.
+          <p style="margin-top: 16px;">
+            Perusahaan teknologi yang mengembangkan solusi berbasis AI, IoT,
+            dan sistem digital terintegrasi untuk mendukung transformasi
+            industri.
           </p>
         </div>
         <div>
@@ -1916,59 +1400,136 @@
     </div>
   </footer>
 
+  <!-- =========================================
+       SCRIPTS (INTERACTIVE CANVAS + UI LOGIC)
+       ========================================= -->
   <script>
     (function () {
       'use strict';
 
-      /* ---------- Mobile nav toggle ---------- */
-      var navToggle = document.getElementById('navToggle');
-      var navLinks = document.getElementById('navLinks');
+      /* --- 1. UI Toggles & Intersection Observers --- */
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
 
       if (navToggle && navLinks) {
-        navToggle.addEventListener('click', function () {
-          var open = navLinks.classList.toggle('open');
-          navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-          navToggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+        navToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('open');
         });
-
-        // Close menu on link click (mobile)
-        navLinks.querySelectorAll('a').forEach(function (a) {
-          a.addEventListener('click', function () {
-            if (navLinks.classList.contains('open')) {
-              navLinks.classList.remove('open');
-              navToggle.setAttribute('aria-expanded', 'false');
-              navToggle.setAttribute('aria-label', 'Buka menu');
-            }
-          });
-        });
-
-        // Close on resize to desktop
-        window.addEventListener('resize', function () {
-          if (window.innerWidth > 960 && navLinks.classList.contains('open')) {
-            navLinks.classList.remove('open');
-            navToggle.setAttribute('aria-expanded', 'false');
-          }
+        navLinks.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => navLinks.classList.remove('open'));
         });
       }
 
-      /* ---------- Reveal-on-scroll ---------- */
-      var revealEls = document.querySelectorAll('.reveal');
-
+      const revealEls = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && revealEls.length) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('in');
               io.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        revealEls.forEach(function (el) { io.observe(el); });
-      } else {
-        // Fallback: show everything
-        revealEls.forEach(function (el) { el.classList.add('in'); });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => io.observe(el));
       }
+
+      /* --- 2. INTERACTIVE FLOWING CANVAS (GLOBAL) --- */
+      const canvas = document.getElementById('flowCanvas');
+      const ctx = canvas.getContext('2d');
+      let w, h;
+      let mouse = { x: -1000, y: -1000 };
+      let scrollY = window.scrollY;
+
+      // Mengatur ukuran canvas agar pas dengan layar penuh
+      function resizeCanvas() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      // Mendengarkan scroll untuk efek parallax gelombang
+      window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+      });
+
+      // Mendengarkan pergerakan mouse di seluruh halaman
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      window.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+
+      let time = 0;
+      // Warna redup agar elegan dan tidak mengganggu konten
+      const colors = [
+        'rgba(93, 189, 119, 0.15)', // Hijau Muda
+        'rgba(76, 165, 71, 0.10)',  // Hijau Tua
+        'rgba(133, 214, 154, 0.20)', // Hijau Terang
+        'rgba(57, 138, 53, 0.08)',  // Hijau Emerald
+        'rgba(212, 244, 217, 0.25)'  // Hijau Soft
+      ];
+
+      // Fungsi Loop Animasi (Pelan dan Elegan)
+      function animateFlow() {
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.fillStyle = 'rgba(249, 250, 251, 0.02)';
+        ctx.fillRect(0, 0, w, h);
+
+        // Membuat efek gelombang yang memenuhi layar vertikal
+        for (let i = 0; i < 5; i++) {
+          ctx.beginPath();
+          ctx.lineWidth = 1 + i * 0.8;
+          ctx.strokeStyle = colors[i];
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Posisi dasar garis disebar merata secara vertikal
+          let yBase = (h / 6) * (i + 1);
+
+          for (let x = -50; x < w + 50; x += 40) {
+            let scrollEffect = scrollY * 0.0015;
+            let y = yBase
+              + Math.sin(x * 0.002 + time + i + scrollEffect) * (70 + i * 15)
+              + Math.cos(x * 0.004 - time * 0.8 + i - scrollEffect) * 40;
+
+            let dx = mouse.x - x;
+            let dy = mouse.y - y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 300) {
+              let force = Math.pow((300 - distance) / 300, 2);
+              y += force * 80 * (dy > 0 ? -1 : 1);
+            }
+
+            if (x === -50) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+
+        for (let p = 0; p < 20; p++) {
+          let px = (Math.sin(p * 15 + time * 0.5 + scrollY * 0.001) * w / 1.5) + w / 2;
+          let py = (Math.cos(p * 25 - time * 0.3 + scrollY * 0.001) * h / 1.5) + h / 2;
+
+          px = ((px % w) + w) % w;
+          py = ((py % h) + h) % h;
+
+          ctx.beginPath();
+          ctx.arc(px, py, (p % 3) + 1, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(93, 189, 119, 0.4)';
+          ctx.fill();
+        }
+
+        time += 0.0015;
+        requestAnimationFrame(animateFlow);
+      }
+
+      animateFlow();
     })();
   </script>
 
