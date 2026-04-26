@@ -13,6 +13,9 @@
   <meta property="og:type" content="website" />
   <meta name="robots" content="index, follow" />
 
+  <link rel="icon" type="image/png" href="assets/logo/nth-favicon.png" />
+  <link rel="apple-touch-icon" href="assets/logo/nth-favicon.png" />
+
   <!-- Google Fonts: Inter (modern, clean) + Sora (premium heading) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,6 +173,23 @@
       opacity: 0.8;
     }
 
+    .logo-img {
+      display: none;
+      height: 40px;
+      width: auto;
+      max-width: 220px;
+      object-fit: contain;
+    }
+
+    .logo-img.loaded {
+      display: block;
+    }
+
+    .logo-img.loaded~.logo-mark,
+    .logo-img.loaded~.logo-text {
+      display: none;
+    }
+
     .logo-mark {
       width: 36px;
       height: 36px;
@@ -281,7 +301,7 @@
     }
 
     .hero-bg-img {
-      /* Opacity ditingkatkan ke 30% (0.3) */
+      /* Opacity ditingkatkan ke 50% (0.5) */
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1014,6 +1034,8 @@
   <nav class="nav" aria-label="Navigasi utama">
     <div class="nav-inner">
       <a href="#hero" class="logo" aria-label="Nusantara Teknologi Hijau, Beranda">
+        <img src="assets/logo/nth-logo-full.png" alt="Nusantara Teknologi Hijau" class="logo-img"
+          onload="this.classList.add('loaded')" onerror="this.remove()" />
         <div class="logo-mark" aria-hidden="true">N</div>
         <div class="logo-text">
           <span class="full-name">Nusantara Teknologi Hijau</span>
@@ -1361,6 +1383,8 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#hero" class="logo">
+            <img src="assets/logo/nth-logo-full.png" alt="Nusantara Teknologi Hijau" class="logo-img"
+              onload="this.classList.add('loaded')" onerror="this.remove()" />
             <div class="logo-mark" aria-hidden="true">N</div>
             <div class="logo-text">
               <span>Nusantara Teknologi Hijau</span>
