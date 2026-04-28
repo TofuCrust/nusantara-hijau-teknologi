@@ -608,6 +608,175 @@
       color: var(--text-secondary);
     }
 
+    /* ============================================
+       CATALOG SECTION (NEW)
+       ============================================ */
+    #catalog {
+      background: var(--bg-secondary);
+    }
+
+    .catalog-list {
+      display: grid;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .catalog-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .catalog-card:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: var(--green-main);
+    }
+
+    .catalog-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .catalog-title h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .catalog-title p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .catalog-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--green-dark);
+      border: 1.5px solid var(--green-dark);
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      transition: all 0.2s var(--ease);
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .catalog-cta:hover {
+      background: var(--green-dark);
+      color: white;
+    }
+
+    .catalog-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pkg-details {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      transition: all 0.3s var(--ease);
+    }
+
+    .pkg-summary {
+      padding: 16px 20px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 1.05rem;
+      user-select: none;
+    }
+
+    .pkg-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .pkg-summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--green-dark);
+      transition: transform 0.3s var(--ease);
+      line-height: 1;
+    }
+
+    .pkg-details[open] .pkg-summary::after {
+      transform: rotate(45deg);
+    }
+
+    .pkg-details[open] {
+      border-color: var(--green-main);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pkg-content {
+      padding: 0 20px 20px;
+      border-top: 1px solid var(--border-light);
+      margin-top: 4px;
+      padding-top: 16px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .pkg-price {
+      display: inline-block;
+      background: var(--green-lime);
+      color: var(--green-forest);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .pkg-list {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .pkg-list li {
+      margin-bottom: 6px;
+      padding-left: 4px;
+    }
+
+    .pkg-note {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    .catalog-disclaimer {
+      margin-top: 48px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.03);
+      border-radius: var(--radius-md);
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin-inline: auto;
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       COMPETITIVE ADVANTAGES
+       ============================================ */
     #advantages {
       background: transparent;
     }
@@ -1027,6 +1196,16 @@
         width: 100%;
       }
 
+      .catalog-head {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .catalog-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
       .contact-ctas {
         flex-direction: column;
       }
@@ -1226,6 +1405,293 @@
           </div>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       CATALOG & PRICING (NEW SECTION)
+       ========================================= -->
+  <section id="catalog" class="section">
+    <div class="section-inner">
+      <div class="catalog-head reveal">
+        <div>
+          <span class="section-label">Katalog Layanan</span>
+          <h2 class="section-title">Paket solusi sesuai kebutuhan bisnis.</h2>
+          <p class="section-desc">Pilih layanan berdasarkan skala kebutuhan, mulai dari website, sistem kasir,
+            dashboard, IoT, hingga computer vision.</p>
+        </div>
+      </div>
+
+      <div class="catalog-list">
+        <!-- 1. Website Development -->
+        <div class="catalog-card reveal">
+          <div class="catalog-head">
+            <div class="catalog-title">
+              <h3>Website Development</h3>
+              <p>Layanan pembuatan website profesional untuk company profile, e-commerce, dan sistem berbasis web.</p>
+            </div>
+            <a href="#contact" class="catalog-cta">Diskusikan Kebutuhan</a>
+          </div>
+          <div class="catalog-accordion">
+            <details class="pkg-details">
+              <summary class="pkg-summary">Company Profile</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 3.500.000</span>
+                <p><strong>Cocok untuk:</strong> Agensi jasa, yayasan pendidikan, klinik, restoran, dan UMKM profil
+                  bisnis.</p>
+                <ul class="pkg-list">
+                  <li>5 halaman utama</li>
+                  <li>Desain SEO friendly & mobile responsive</li>
+                  <li>Termasuk hosting dan domain 1 tahun</li>
+                  <li>Estimasi pengerjaan: 5–14 hari kerja</li>
+                </ul>
+                <span class="pkg-note">* Catatan: Termasuk integrasi WhatsApp dan hak revisi minor.</span>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">E-Commerce</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 7.500.000</span>
+                <p><strong>Cocok untuk:</strong> Brand retail, butik online, dan usaha yang ingin menjual produk secara
+                  mandiri.</p>
+                <ul class="pkg-list">
+                  <li>Sistem payment gateway</li>
+                  <li>Manajemen stok & katalog produk</li>
+                  <li>Sistem laporan penjualan dasar</li>
+                </ul>
+                <span class="pkg-note">* Model pembayaran: Termin 40-40-20.</span>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">Web System / App Custom</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 12.000.000</span>
+                <p><strong>Cocok untuk:</strong> HRIS, e-learning, CRM, sistem gudang, dan kebutuhan internal
+                  perusahaan.</p>
+                <ul class="pkg-list">
+                  <li>Sistem manajemen database khusus</li>
+                  <li>Role-based access control (RBAC)</li>
+                  <li>Fitur custom sesuai kebutuhan alur kerja internal</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 2. Point of Sale -->
+        <div class="catalog-card reveal">
+          <div class="catalog-head">
+            <div class="catalog-title">
+              <h3>Point of Sale</h3>
+              <p>Sistem kasir digital untuk transaksi, pembayaran multi-metode, dan pemantauan stok secara real-time.
+              </p>
+            </div>
+            <a href="#contact" class="catalog-cta">Diskusikan Kebutuhan</a>
+          </div>
+          <div class="catalog-accordion">
+            <details class="pkg-details">
+              <summary class="pkg-summary">SaaS Subscription</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 250.000 / bulan</span>
+                <p><strong>Cocok untuk:</strong> Kedai kopi, warung modern, dan toko ritel pemula.</p>
+                <ul class="pkg-list">
+                  <li>Akun basis cloud & update berkala</li>
+                  <li>Kasir digital dengan multi-pembayaran</li>
+                  <li>Sistem pemantauan stok real-time</li>
+                  <li>Manajemen akses kasir</li>
+                </ul>
+                <span class="pkg-note">* Termasuk support teknis sesuai paket layanan.</span>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">Full License One-time</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 15.000.000</span>
+                <p><strong>Cocok untuk:</strong> Minimarket grosir, apotek, dan perusahaan distribusi.</p>
+                <ul class="pkg-list">
+                  <li>Lisensi penggunaan penuh tanpa langganan bulanan</li>
+                  <li>Instalasi sistem di server lokal/pribadi (on-premise)</li>
+                </ul>
+                <span class="pkg-note">* Catatan: Dapat berjalan secara on-premise dan mendukung operasional offline
+                  sesuai kebutuhan teknis.</span>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">Add-on Hardware</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 3.000.000</span>
+                <ul class="pkg-list">
+                  <li>Tablet kasir</li>
+                  <li>Printer thermal</li>
+                  <li>Scanner QR/Barcode</li>
+                  <li>Cash drawer & perangkat pendukung lainnya</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 3. Analytics Dashboard -->
+        <div class="catalog-card reveal">
+          <div class="catalog-head">
+            <div class="catalog-title">
+              <h3>Analytics Dashboard</h3>
+              <p>Dashboard interaktif untuk visualisasi data bisnis agar pengambilan keputusan lebih cepat dan terukur.
+              </p>
+            </div>
+            <a href="#contact" class="catalog-cta">Diskusikan Kebutuhan</a>
+          </div>
+          <div class="catalog-accordion">
+            <details class="pkg-details">
+              <summary class="pkg-summary">Setup Dashboard Dasar</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 4.000.000</span>
+                <p><strong>Cocok untuk:</strong> Toko atau bisnis tunggal yang masih merekap laporan manual.</p>
+                <ul class="pkg-list">
+                  <li>Integrasi 1 sumber data (seperti Excel atau Google Sheets)</li>
+                  <li>Laporan tren penjualan harian & produk terlaris</li>
+                  <li>Visualisasi laba kotor & grafik siap presentasi</li>
+                </ul>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">Advanced Analytics</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 10.000.000</span>
+                <p><strong>Cocok untuk:</strong> UMKM menengah dengan beberapa cabang atau multi-channel sales.</p>
+                <ul class="pkg-list">
+                  <li>Integrasi multi-database & real-time sync</li>
+                  <li>Integrasi data dari beberapa sumber sekaligus</li>
+                  <li>Fitur prediksi (sales forecasting) dasar AI</li>
+                </ul>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">Maintenance & Updates</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 500.000 / bulan</span>
+                <ul class="pkg-list">
+                  <li>Pemeliharaan data pipeline</li>
+                  <li>Troubleshooting & backup berkala</li>
+                  <li>Update struktur laporan sesuai kebutuhan bisnis</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 4. IoT & RFID Solutions -->
+        <div class="catalog-card reveal">
+          <div class="catalog-head">
+            <div class="catalog-title">
+              <h3>IoT & RFID Solutions</h3>
+              <p>Solusi IoT dan RFID untuk monitoring aset, tracking barang, dan otomasi proses operasional.</p>
+            </div>
+            <a href="#contact" class="catalog-cta">Diskusikan Kebutuhan</a>
+          </div>
+          <div class="catalog-accordion">
+            <details class="pkg-details">
+              <summary class="pkg-summary">Smart Monitoring</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 5.000.000</span>
+                <p><strong>Cocok untuk:</strong> Cold storage, smart farming, hidroponik, gudang, dan monitoring
+                  lingkungan.</p>
+                <ul class="pkg-list">
+                  <li>Integrated IoT sederhana, sensor, dan display sesuai kebutuhan</li>
+                  <li>Dashboard sensor & grafik tren</li>
+                  <li>Sistem notifikasi dini melalui Telegram atau WhatsApp</li>
+                </ul>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">RFID Asset Tracking</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 8.000.000</span>
+                <p><strong>Cocok untuk:</strong> Retail, butik, gudang, persewaan alat, dan stock opname.</p>
+                <ul class="pkg-list">
+                  <li>Penyediaan RFID reader & tagging aset</li>
+                  <li>Sistem manajemen inventaris</li>
+                  <li>Pembacaan banyak tag RFID sekaligus</li>
+                  <li>Pencatatan aset digital terpusat</li>
+                </ul>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">Industrial Automation</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">By Consultation</span>
+                <p><strong>Cocok untuk:</strong> Modernisasi proses industri dan pabrik.</p>
+                <ul class="pkg-list">
+                  <li>Kontrol mesin jarak jauh</li>
+                  <li>Integrasi sistem IoT kompleks</li>
+                </ul>
+                <span class="pkg-note">* Catatan: Ruang lingkup akan ditentukan melalui asesmen teknis.</span>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 5. Advanced Quality Control -->
+        <div class="catalog-card reveal">
+          <div class="catalog-head">
+            <div class="catalog-title">
+              <h3>Advanced Quality Control</h3>
+              <p>Sistem quality control berbasis Computer Vision untuk mendeteksi cacat produk secara otomatis dan
+                real-time.</p>
+            </div>
+            <a href="#contact" class="catalog-cta">Diskusikan Kebutuhan</a>
+          </div>
+          <div class="catalog-accordion">
+            <details class="pkg-details">
+              <summary class="pkg-summary">Starter Single-Line</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 15.000.000</span>
+                <p><strong>Cocok untuk:</strong> Industri skala kecil dengan 1 jalur inspeksi.</p>
+                <ul class="pkg-list">
+                  <li>1 kamera deteksi</li>
+                  <li>Pemrograman deteksi 1 jenis defect</li>
+                  <li>Integrasi dashboard pemantauan lokal</li>
+                  <li>Estimasi pengerjaan: 3–4 minggu</li>
+                </ul>
+                <span class="pkg-note">* Catatan: Tingkat keberhasilan bergantung pada kualitas data, kondisi
+                  pencahayaan, dan hasil asesmen lapangan.</span>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">Business Multi-Line</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Mulai dari Rp 35.000.000</span>
+                <p><strong>Cocok untuk:</strong> Pabrik menengah dengan beberapa jalur inspeksi.</p>
+                <ul class="pkg-list">
+                  <li>Hingga 3 kamera inspeksi</li>
+                  <li>Pemrograman deteksi berbagai variasi defect</li>
+                  <li>Integrasi cloud dashboard untuk pemantauan terpusat</li>
+                  <li>Estimasi pengerjaan: 6–8 minggu</li>
+                </ul>
+              </div>
+            </details>
+            <details class="pkg-details">
+              <summary class="pkg-summary">Enterprise</summary>
+              <div class="pkg-content">
+                <span class="pkg-price">Custom Quote</span>
+                <p><strong>Cocok untuk:</strong> Pabrik bervolume tinggi dengan otomasi lanjutan.</p>
+                <ul class="pkg-list">
+                  <li>Integrasi penuh dengan alat industri lain & PLC</li>
+                  <li>Sistem reject otomatis berbasis mekanis</li>
+                  <li>Sesi training untuk operator mesin</li>
+                </ul>
+                <span class="pkg-note">* Catatan: Ruang lingkup mengikuti hasil konsultasi dan asesmen teknis.</span>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-disclaimer reveal">
+        Harga bersifat estimasi awal dan dapat disesuaikan berdasarkan ruang lingkup, kebutuhan integrasi, perangkat
+        tambahan, serta hasil konsultasi teknis.
+      </div>
+
     </div>
   </section>
 
