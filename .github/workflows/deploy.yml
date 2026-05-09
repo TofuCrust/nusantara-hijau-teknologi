@@ -1,0 +1,25 @@
+name: Deploy NTH Portal to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Eksekusi SSH ke VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.RUMAH_HARRIST }}
+          username: ${{ secrets.HARRIS }}
+          key: ${{ secrets.HARRIS_HYTAM }}
+          port: 22
+          script: |
+            # Pindah ke direktori web server
+            cd /var/www/nusantarateknologihijau.web.id
+
+            # Tarik kode terbaru dari GitHub (karena repo Public, tidak perlu token!)
+            git fetch origin main
+            git reset --hard origin/main
