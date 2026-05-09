@@ -9,6 +9,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # --- LANGKAH DEBUG TAMBAHAN ---
+      - name: Detektif Rahasia (Cek Panjang Karakter)
+        run: |
+          echo "Memeriksa apakah robot benar-benar membawa kuncinya:"
+          echo "Panjang NTH_HOST: ${#CEK_HOST}"
+          echo "Panjang NTH_USERNAME: ${#CEK_USER}"
+          echo "Panjang NTH_SSH_KEY: ${#CEK_KEY}"
+        env:
+          CEK_HOST: ${{ secrets.NTH_HOST }}
+          CEK_USER: ${{ secrets.NTH_USERNAME }}
+          CEK_KEY: ${{ secrets.NTH_SSH_KEY }}
+          
+      # --- LANGKAH ASLI ---
       - name: Eksekusi SSH ke VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -17,9 +30,6 @@ jobs:
           key: ${{ secrets.NTH_SSH_KEY }}
           port: 22
           script: |
-            # Pindah ke direktori web server
             cd /var/www/nusantarateknologihijau.web.id
-            
-            # Tarik kode terbaru dari GitHub (karena repo Public, tidak perlu token!)
             git fetch origin main
             git reset --hard origin/main
