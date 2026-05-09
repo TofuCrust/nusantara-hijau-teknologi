@@ -21,6 +21,8 @@ jobs:
             # Pindah ke direktori web server
             cd /var/www/nusantarateknologihijau.web.id
             
+            git config --global --add safe.directory /var/www/nusantarateknologihijau.web.id
+
             # Tarik kode terbaru dari GitHub (karena repo Public, tidak perlu token!)
             git fetch origin main
             git reset --hard origin/main
