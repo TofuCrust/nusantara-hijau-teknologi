@@ -122,6 +122,30 @@
     time += 0.0015;
     requestAnimationFrame(animateFlow);
   }
+    
+    animateFlow();
+    
+    /* --- 3. WHATSAPP LEAD FORM HANDLER --- */
+  const leadForm = document.getElementById("lead-form");
 
-  animateFlow();
+  if (leadForm) {
+    leadForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+  
+      const name = document.getElementById("leadName").value.trim();
+      const phone = document.getElementById("leadPhone").value.trim();
+      const service = document.getElementById("leadService").value;
+      const budget = document.getElementById("leadBudget").value;
+      const message = document.getElementById("leadMessage").value.trim();
+  
+      const whatsappNumber = "6282136248135";
+  
+      const text = `Halo NTH, saya ingin konsultasi.\n\nNama: ${name}\nNomor WhatsApp: ${phone}\nLayanan: ${service}\nEstimasi Budget: ${budget}\n\nKebutuhan:\n${message}`;
+  
+      const encodedText = encodeURIComponent(text);
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+  
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    });
+  }
 })();
